@@ -13,5 +13,10 @@ namespace MakeMeUpzz.Layouts
         {
 
         }
+
+        protected void ManageMakeupButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/ManageMakeupPage.aspx");
+        }
     }
 }
