@@ -33,7 +33,9 @@ namespace MakeMeUpzz.Views
                 return false;
             }
 
-            if ((from User in db.Users where User.UserEmail == email select User.UserEmail).ToList().FirstOrDefault() == email)
+            string validateEmail = (from User in db.Users where User.UserEmail.ToUpper().Equals(email.ToUpper()) select User.UserEmail).FirstOrDefault();
+
+            if (validateEmail != null && validateEmail.ToUpper().Equals(email.ToUpper()))
             {
                 FailLbl.Text = "Email already exists";
                 FailLbl.Visible = true;
@@ -61,7 +63,9 @@ namespace MakeMeUpzz.Views
                 return false;
             }
 
-            if ((from User in db.Users where User.Username == username select User.Username).ToList().FirstOrDefault() == username)
+            string validateUsername = (from x in db.Users where x.Username.Equals(username) select x.Username).FirstOrDefault();
+
+            if (validateUsername != null && validateUsername.Equals(username))
             {
                 FailLbl.Text = "Username already exists";
                 FailLbl.Visible = true;
@@ -74,18 +78,20 @@ namespace MakeMeUpzz.Views
 
         protected int GenerateUserId()
         {
-            int lastId = Convert.ToInt32((from User in db.Users select User.UserID).ToString().LastOrDefault());
             int newUserId;
-            if(lastId == 0)
+            string lastUsername = (from x in db.Users select x.Username).ToList().LastOrDefault();
+            if (lastUsername == null)
             {
                 newUserId = 1;
+                return newUserId;
             }
             else
             {
+                int lastId = (from User in db.Users select User.UserID).LastOrDefault();
                 newUserId = lastId + 1;
+                return newUserId;
             }
-
-            return newUserId;
+            
         }
 
         protected string GetGender()

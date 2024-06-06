@@ -20,11 +20,11 @@
             </div>
             <div>
                 <asp:Label ID="PasswordLbl" runat="server" Text="Password"></asp:Label>
-                <asp:TextBox ID="PasswordTxt" runat="server"></asp:TextBox>
+                <asp:TextBox ID="PasswordTxt" runat="server" TextMode="Password"></asp:TextBox>
             </div>
             <div>
                 <asp:Label ID="ConfirmLbl" runat="server" Text="Confirmation Password"></asp:Label>
-                <asp:TextBox ID="ConfirmTxt" runat="server"></asp:TextBox>
+                <asp:TextBox ID="ConfirmTxt" runat="server" TextMode="Password"></asp:TextBox>
             </div>
             <div>
                 <asp:Label ID="DOBLbl" runat="server" Text="Date of Birth"></asp:Label>

@@ -16,7 +16,7 @@
             </div>
             <div>
                 <asp:Label ID="PasswordLbl" runat="server" Text="Password"></asp:Label>
-                <asp:TextBox ID="PasswordTxt" runat="server"></asp:TextBox>
+                <asp:TextBox ID="PasswordTxt" runat="server" TextMode="Password"></asp:TextBox>
             </div>
             <div>
                 <asp:CheckBox ID ="RememberMeBox" runat = "server" Text="Remember Me" />

@@ -90,7 +90,7 @@ namespace MakeMeUpzz.Views
                 }
                 else
                 {
-                    FailLbl.Text = "User 404";
+                    FailLbl.Text = "User not found";
                     FailLbl.Visible = true;
                 }
             }

@@ -14,16 +14,22 @@ namespace MakeMeUpzz.Views
         protected void Page_Load(object sender, EventArgs e)
         {
             
-
             if (Session["user"] == null && Request.Cookies["User_Cookie"] == null)
             {
                 Response.Redirect("LoginPage.aspx");
             }
             else
             {
+                User user;
                 if (Session["user"] == null)
                 {
-                    var id = Request.Cookies["User_Cookie"].Value;
+                    var id = Int32.Parse(Request.Cookies["User_Cookie"].Value);
+                    user = (from x in db.Users where x.UserID == id select x).FirstOrDefault();
+                    Session["user"] = user;
+                }
+                else
+                {
+                    user = (User) Session["user"];
                 }
             }
         }
