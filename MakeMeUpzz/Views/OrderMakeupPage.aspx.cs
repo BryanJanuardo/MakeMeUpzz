@@ -32,6 +32,8 @@ namespace MakeMeUpzz.Views
                 int quantity = Convert.ToInt32(MakeupGridView.Rows[rowIndex].Cells[7].FindControl("MakeupQuantityInput") as TextBox);
             
 
+
+
             }
         }
     }
