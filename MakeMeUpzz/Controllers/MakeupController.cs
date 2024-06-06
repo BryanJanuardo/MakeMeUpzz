@@ -55,5 +55,19 @@ namespace MakeMeUpzz.Controllers
         {
             return MakeupHandler.getAllMakeup().OrderByDescending(makeup => makeup.MakeupBrand.MakeupBrandRating).ToList();
         }
+
+        public static Makeup getMakeupById(int id)
+        {
+            return MakeupHandler.getMakeupById(id);
+        }
+
+        public static void editMakeup(int id, string name, int price, int weight, string type, string brand)
+        {
+            MakeupHandler.editMakeup(id, name, price, weight, type, brand);
+        }
+        public static void deleteMakeup(int id)
+        {
+            MakeupHandler.deleteMakeup(id);
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layouts/Navbar.Master" AutoEventWireup="true" CodeBehind="ManageMakeupPage.aspx.cs" Inherits="MakeMeUpzz.Views.ManageMakeupPage" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:GridView ID="MakeupGridView" runat="server" AutoGenerateColumns="False">
+    <asp:GridView ID="MakeupGridView" runat="server" AutoGenerateColumns="False" OnRowEditing="MakeupGridView_RowEditing" OnRowDeleting="MakeupGridView_RowDeleting">
         <Columns>
             <asp:BoundField DataField="MakeupID" HeaderText="ID" SortExpression="MakeupName" />
             <asp:BoundField DataField="MakeupName" HeaderText="Makeup Name" SortExpression="MakeupName" />

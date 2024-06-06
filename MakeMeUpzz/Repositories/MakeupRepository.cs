@@ -20,5 +20,32 @@ namespace MakeMeUpzz.Repositories
             db.Makeups.Add(newMakeup);
             db.SaveChanges();
         }
+           
+        public static Makeup getMakeupById(int id)
+        {
+            DatabaseContextEntities db = Singleton.getDB();
+            Makeup makeup = db.Makeups.Find(id);
+            return makeup;
+        }
+
+        public static void editMakeup(Makeup newMakeup)
+        {
+            DatabaseContextEntities db = Singleton.getDB();
+            Makeup makeup = db.Makeups.Find(newMakeup.MakeupID);
+            makeup.MakeupName = newMakeup.MakeupName;
+            makeup.MakeupPrice = newMakeup.MakeupPrice;
+            makeup.MakeupWeight = newMakeup.MakeupWeight;
+            makeup.MakeupBrandID = newMakeup.MakeupBrandID;
+            makeup.MakeupTypeID = newMakeup.MakeupTypeID;
+            db.SaveChanges();
+        }
+
+        public static void deleteMakeup(int id)
+        {
+            DatabaseContextEntities db = Singleton.getDB();
+            Makeup makeup = db.Makeups.Find(id);
+            db.Makeups.Remove(makeup);
+            db.SaveChanges();
+        }
     }
 }

@@ -33,5 +33,21 @@ namespace MakeMeUpzz.Views
         {
             Response.Redirect("~/Views/InsertMakeupBrandPage.aspx");
         }
+
+        protected void MakeupGridView_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewRow row = MakeupGridView.Rows[e.NewEditIndex];
+            int id = Convert.ToInt32(row.Cells[0].Text);
+            Response.Redirect("~/Views/UpdateMakeupPage.aspx?ID=" + id);
+        }
+
+        protected void MakeupGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            GridViewRow row = MakeupGridView.Rows[e.RowIndex];
+            int id = Convert.ToInt32(row.Cells[0].Text);
+            MakeupController.deleteMakeup(id);
+            MakeupGridView.DataSource = MakeupController.getAllMakeupSortDescByRating();
+            MakeupGridView.DataBind();
+        }
     }
 }

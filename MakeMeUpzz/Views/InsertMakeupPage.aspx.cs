@@ -41,6 +41,7 @@ namespace MakeMeUpzz.Views
             int makeupWeight = Convert.ToInt32(makeupWeightText);
 
             MakeupController.insertNewMakeup(makeupName, makeupPrice, makeupWeight, makeupType, makeupBrand);
+            Response.Redirect("~/Views/ManageMakeupPage.aspx");
         }
     }
 }

@@ -40,5 +40,22 @@ namespace MakeMeUpzz.Handlers
             Makeup newMakeup = MakeupFactory.createMakeup(generateNewMakeupId(),name, price, weight, typeId, brandId);
             MakeupRepository.insertNewMakeup(newMakeup);
         }
+
+        public static Makeup getMakeupById(int id)
+        {
+            return MakeupRepository.getMakeupById(id);
+        }
+
+        public static void editMakeup(int id, string name, int price, int weight, string type, string brand)
+        {
+            int typeId = MakeupTypeHandler.getMakeupTypeIdByName(type);
+            int brandId = MakeupBrandHandler.getMakeupBrandIdByName(brand);
+            Makeup newMakeup = MakeupFactory.createMakeup(id, name, price, weight, typeId, brandId);
+            MakeupRepository.editMakeup(newMakeup);
+        }
+        public static void deleteMakeup(int id)
+        {
+            MakeupRepository.deleteMakeup(id);
+        }
     }
 }
