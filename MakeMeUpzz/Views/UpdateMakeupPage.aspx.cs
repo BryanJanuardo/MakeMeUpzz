@@ -55,5 +55,6 @@ namespace MakeMeUpzz.Views
 
             Response.Redirect("~/Views/ManageMakeupPage.aspx");
         }
+
     }
 }
