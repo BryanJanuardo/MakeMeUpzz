@@ -33,22 +33,22 @@ namespace MakeMeUpzz.Views
                 return false;
             }
 
-            string validateEmail = (from User in db.Users where User.UserEmail.ToUpper().Equals(email.ToUpper()) select User.UserEmail).FirstOrDefault();
+            User validateUser = (from User in db.Users where User.UserEmail.ToUpper().Equals(email.ToUpper()) select User).FirstOrDefault();
 
-            if (validateEmail == null)
+            if (validateUser == null)
             {
                 FailLbl.Text = "Incorrect email or password";
                 FailLbl.Visible = true;
                 return false;
             }
-            else if (!validateEmail.ToUpper().Equals(email.ToUpper()))
+            else if (!validateUser.UserEmail.ToUpper().Equals(email.ToUpper()))
             {
                 FailLbl.Text = "Incorrect email or password";
                 FailLbl.Visible = true;
                 return false;
             }
 
-            if ((from User in db.Users where User.UserPassword == password select User.UserPassword).FirstOrDefault() != password)
+            if (!validateUser.UserPassword.Equals(password))
             {
                 FailLbl.Text = "Incorrect email or password";
                 FailLbl.Visible = true;
