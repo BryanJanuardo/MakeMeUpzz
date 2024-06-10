@@ -19,5 +19,7 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="ErrorLabel" runat="server" Text=""></asp:Label>
+    <asp:Button ID="ClearCartButton" runat="server" Text="Clear Cart" OnClick="ClearCartButton_Click" />
+    <asp:Button ID="CheckoutButton" runat="server" Text="Checkout" OnClick="CheckoutButton_Click" />
 </asp:Content>

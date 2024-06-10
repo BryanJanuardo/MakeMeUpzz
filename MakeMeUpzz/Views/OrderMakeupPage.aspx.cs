@@ -1,4 +1,5 @@
 ﻿using MakeMeUpzz.Controllers;
+using MakeMeUpzz.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
@@ -13,6 +14,7 @@ namespace MakeMeUpzz.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            User user = Session["user"] as User;
             if (IsPostBack == false)
             {
                 MakeupGridView.DataSource = MakeupController.getAllMakeupSortDescByRating();
@@ -29,9 +31,28 @@ namespace MakeMeUpzz.Views
                 int rowIndex = row.RowIndex;
                  
                 int makeupId = Convert.ToInt32(MakeupGridView.Rows[rowIndex].Cells[0].Text);
-                int quantity = Convert.ToInt32(MakeupGridView.Rows[rowIndex].Cells[7].FindControl("MakeupQuantityInput") as TextBox);
-            
+                int makeupQuantity = Convert.ToInt32(MakeupGridView.Rows[rowIndex].Cells[7].FindControl("MakeupQuantityInput") as TextBox);
+                User user = Session["user"] as User;
+                int userId = user.UserID;
+
+                if (CartController.quantityValidation(makeupQuantity)){
+                    CartController.addMakeupToCart(userId, makeupId, makeupQuantity);
+                }
             }
+        }
+
+        protected void ClearCartButton_Click(object sender, EventArgs e)
+        {
+            User user = Session["user"] as User;
+            ErrorLabel.Text = CartController.resetCart(user.UserID);
+        }
+
+        protected void CheckoutButton_Click(object sender, EventArgs e)
+        {
+            User user = Session["user"] as User;
+            // tambain boolean variabel
+            ErrorLabel.Text = TransactionController.checkoutCart(user.UserID);
+
         }
     }
 }

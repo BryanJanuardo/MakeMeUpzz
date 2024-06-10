@@ -24,12 +24,30 @@ namespace MakeMeUpzz.Views
         protected global::System.Web.UI.WebControls.GridView MakeupGridView;
 
         /// <summary>
-        /// Label1 control.
+        /// ErrorLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label ErrorLabel;
+
+        /// <summary>
+        /// ClearCartButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ClearCartButton;
+
+        /// <summary>
+        /// CheckoutButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CheckoutButton;
     }
 }

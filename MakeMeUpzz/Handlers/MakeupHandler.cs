@@ -14,7 +14,7 @@ namespace MakeMeUpzz.Handlers
         private static int generateNewMakeupId()
         {
             int newId = 1;
-            int latestId = (from makeup in getAllMakeup() select makeup.MakeupID).ToList().LastOrDefault();
+            int latestId = (from makeup in MakeupRepository.getAllMakeup() select makeup.MakeupID).ToList().LastOrDefault();
 
             if(latestId == 0)
             {
