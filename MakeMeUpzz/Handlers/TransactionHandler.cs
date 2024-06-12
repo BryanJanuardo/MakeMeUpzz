@@ -26,6 +26,22 @@ namespace MakeMeUpzz.Handlers
 
             return newId;
         }
+        private static int generateNewTransactionDetailId()
+        {
+            int newId = 1;
+            int latestId = (from td in TransactionRepository.getAllTransactionDetail() select td.TransactionDetailID).ToList().LastOrDefault();
+
+            if (latestId == 0)
+            {
+                newId = 1;
+            }
+            else
+            {
+                newId = latestId + 1;
+            }
+
+            return newId;
+        }
         public static bool checkoutCart(int userId)
         {
             List<Cart> carts = CartRepository.getAllCartsByUserId(userId);
@@ -40,7 +56,7 @@ namespace MakeMeUpzz.Handlers
                 int transactionId = transactionHeader.TransactionID;
                 int makeupId = cart.MakeupID;
                 int quantity = cart.Quantity;
-                TransactionDetail td = TransactionFactory.createTransactionDetail(transactionId, makeupId, quantity);
+                TransactionDetail td = TransactionFactory.createTransactionDetail(generateNewTransactionDetailId(), transactionId, makeupId, quantity);
                 TransactionRepository.insertTransactionDetails(td);
             }
             CartRepository.emptyCartByUserId(userId);

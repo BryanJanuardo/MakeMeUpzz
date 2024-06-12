@@ -35,14 +35,11 @@
     <Property Name="MakeupTypeID" Type="int" Nullable="false" />
     <Property Name="MakeupTypeName" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\KULIAH\SEMESTER 4\PSD\LAB\MAKEMEUPZZ\MAKEMEUPZZ\APP_DATA\DATABASECONTEXT.MDF.dbo.TransactionDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="TransactionDetails">
     <Key>
-      <PropertyRef Name="TransactionID" />
-      <PropertyRef Name="MakeupID" />
-      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="TransactionDetailID" />
     </Key>
+    <Property Name="TransactionDetailID" Type="int" Nullable="false" />
     <Property Name="TransactionID" Type="int" Nullable="false" />
     <Property Name="MakeupID" Type="int" Nullable="false" />
     <Property Name="Quantity" Type="int" Nullable="false" />
@@ -157,15 +154,9 @@ warning 6002: The table/view 'C:\KULIAH\SEMESTER 4\PSD\LAB\MAKEMEUPZZ\MAKEMEUPZZ
     <EntitySet Name="MakeupBrands" EntityType="Self.MakeupBrands" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Makeups" EntityType="Self.Makeups" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MakeupTypes" EntityType="Self.MakeupTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionDetails" EntityType="Self.TransactionDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransactionHeaders" EntityType="Self.TransactionHeaders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TransactionDetails" EntityType="Self.TransactionDetails" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [TransactionDetails].[TransactionID] AS [TransactionID], 
-    [TransactionDetails].[MakeupID] AS [MakeupID], 
-    [TransactionDetails].[Quantity] AS [Quantity]
-    FROM [dbo].[TransactionDetails] AS [TransactionDetails]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="FK_Carts_ToMakeups" Association="Self.FK_Carts_ToMakeups">
       <End Role="Makeups" EntitySet="Makeups" />
       <End Role="Carts" EntitySet="Carts" />

@@ -13,6 +13,11 @@ namespace MakeMeUpzz.Repositories
             DatabaseContextEntities db = Singleton.getDB();
             return db.TransactionHeaders.ToList();
         }
+        public static List<TransactionDetail> getAllTransactionDetail()
+        {
+            DatabaseContextEntities db = Singleton.getDB();
+            return db.TransactionDetails.ToList();
+        }
 
         public static void insertTransactionHeaders(TransactionHeader th)
         {

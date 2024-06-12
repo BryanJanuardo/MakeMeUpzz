@@ -40,6 +40,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TransactionDetails">
+      <EntityTypeMapping TypeName="DatabaseContextModel.TransactionDetail">
+        <MappingFragment StoreEntitySet="TransactionDetails">
+          <ScalarProperty Name="TransactionDetailID" ColumnName="TransactionDetailID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="MakeupID" ColumnName="MakeupID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TransactionHeaders">
       <EntityTypeMapping TypeName="DatabaseContextModel.TransactionHeader">
         <MappingFragment StoreEntitySet="TransactionHeaders">
@@ -60,15 +70,6 @@
           <ScalarProperty Name="UserGender" ColumnName="UserGender" />
           <ScalarProperty Name="UserRole" ColumnName="UserRole" />
           <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TransactionDetails">
-      <EntityTypeMapping TypeName="DatabaseContextModel.TransactionDetail">
-        <MappingFragment StoreEntitySet="TransactionDetails">
-          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
-          <ScalarProperty Name="MakeupID" ColumnName="MakeupID" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

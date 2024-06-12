@@ -20,10 +20,11 @@ namespace MakeMeUpzz.Factories
             return transactionHeader;
         }
 
-        public static TransactionDetail createTransactionDetail(int transactionId, int makeupId, int makeupQuantity)
+        public static TransactionDetail createTransactionDetail(int transactiondetailId, int transactionId, int makeupId, int makeupQuantity)
         {
             TransactionDetail transactionDetail = new TransactionDetail()
             {
+                TransactionDetailID = transactiondetailId,
                 TransactionID = transactionId,
                 MakeupID = makeupId,
                 Quantity = makeupQuantity

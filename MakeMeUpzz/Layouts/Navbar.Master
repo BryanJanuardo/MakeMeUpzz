@@ -15,7 +15,7 @@
                 <asp:Button ID="HistoryButton" runat="server" Text="History" />
                 <asp:Button ID="UserProfileButton" runat="server" Text="Profile" />
                 <asp:Button ID="UserLogoutButton" runat="server" Text="Logout" />
-            <%}else if ((Session["user"] as MakeMeUpzz.Models.User).UserRole == "Makeup")
+            <%}else if ((Session["user"] as MakeMeUpzz.Models.User).UserRole == "Admin")
                 {%>
                 <asp:Button ID="HomeButton" runat="server" Text="Home" />
                 <asp:Button ID="ManageMakeupButton" runat="server" Text="ManageMakeup" OnClick="ManageMakeupButton_Click" />

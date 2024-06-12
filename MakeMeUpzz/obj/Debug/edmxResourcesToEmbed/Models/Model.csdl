@@ -43,6 +43,17 @@
     <Property Name="MakeupTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Makeups" Relationship="Self.FK_Makeups_ToMakeupTypes" FromRole="MakeupTypes" ToRole="Makeups" />
   </EntityType>
+  <EntityType Name="TransactionDetail">
+    <Key>
+      <PropertyRef Name="TransactionDetailID" />
+    </Key>
+    <Property Name="TransactionDetailID" Type="Int32" Nullable="false" />
+    <Property Name="TransactionID" Type="Int32" Nullable="false" />
+    <Property Name="MakeupID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Makeup" Relationship="Self.FK_TransactionDetails_ToMakeups" FromRole="TransactionDetails" ToRole="Makeups" />
+    <NavigationProperty Name="TransactionHeader" Relationship="Self.FK_TransactionDetails_ToTransactionHeaders" FromRole="TransactionDetails" ToRole="TransactionHeaders" />
+  </EntityType>
   <EntityType Name="TransactionHeader">
     <Key>
       <PropertyRef Name="TransactionID" />
@@ -67,18 +78,6 @@
     <Property Name="UserPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Carts" Relationship="Self.FK_Carts_ToUsers" FromRole="Users" ToRole="Carts" />
     <NavigationProperty Name="TransactionHeaders" Relationship="Self.FK_TransactionHeaders_ToUsers" FromRole="Users" ToRole="TransactionHeaders" />
-  </EntityType>
-  <EntityType Name="TransactionDetail">
-    <Key>
-      <PropertyRef Name="TransactionID" />
-      <PropertyRef Name="MakeupID" />
-      <PropertyRef Name="Quantity" />
-    </Key>
-    <Property Name="TransactionID" Type="Int32" Nullable="false" />
-    <Property Name="MakeupID" Type="Int32" Nullable="false" />
-    <Property Name="Quantity" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Makeup" Relationship="Self.FK_TransactionDetails_ToMakeups" FromRole="TransactionDetails" ToRole="Makeups" />
-    <NavigationProperty Name="TransactionHeader" Relationship="Self.FK_TransactionDetails_ToTransactionHeaders" FromRole="TransactionDetails" ToRole="TransactionHeaders" />
   </EntityType>
   <Association Name="FK_Carts_ToMakeups">
     <End Role="Makeups" Type="Self.Makeup" Multiplicity="1" />
@@ -169,9 +168,9 @@
     <EntitySet Name="MakeupBrands" EntityType="Self.MakeupBrand" />
     <EntitySet Name="Makeups" EntityType="Self.Makeup" />
     <EntitySet Name="MakeupTypes" EntityType="Self.MakeupType" />
+    <EntitySet Name="TransactionDetails" EntityType="Self.TransactionDetail" />
     <EntitySet Name="TransactionHeaders" EntityType="Self.TransactionHeader" />
     <EntitySet Name="Users" EntityType="Self.User" />
-    <EntitySet Name="TransactionDetails" EntityType="Self.TransactionDetail" />
     <AssociationSet Name="FK_Carts_ToMakeups" Association="Self.FK_Carts_ToMakeups">
       <End Role="Makeups" EntitySet="Makeups" />
       <End Role="Carts" EntitySet="Carts" />

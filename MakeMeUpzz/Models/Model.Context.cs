@@ -22,17 +22,15 @@ namespace MakeMeUpzz.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TransactionDetail>().HasKey(td => new { td.TransactionID, td.MakeupID });
             throw new UnintentionalCodeFirstException();
-
         }
     
         public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<MakeupBrand> MakeupBrands { get; set; }
         public virtual DbSet<Makeup> Makeups { get; set; }
         public virtual DbSet<MakeupType> MakeupTypes { get; set; }
+        public virtual DbSet<TransactionDetail> TransactionDetails { get; set; }
         public virtual DbSet<TransactionHeader> TransactionHeaders { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<TransactionDetail> TransactionDetails { get; set; }
     }
 }
