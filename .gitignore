@@ -232,3 +232,5 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+/MakeMeUpzz/App_Data/DatabaseContext.mdf
+/MakeMeUpzz/App_Data/DatabaseContext_log.ldf
