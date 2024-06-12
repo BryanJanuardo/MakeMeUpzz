@@ -19,8 +19,12 @@ x64/
 x86/
 build/
 bld/
+<<<<<<< Updated upstream
 [Bb]in/
 [Oo]bj/
+=======
+
+>>>>>>> Stashed changes
 
 # Visual Studio 2015 cache/options directory
 .vs/
