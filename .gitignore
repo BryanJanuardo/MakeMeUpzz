@@ -238,3 +238,6 @@ _Pvt_Extensions
 .fake/
 /MakeMeUpzz/App_Data/DatabaseContext.mdf
 /MakeMeUpzz/App_Data/DatabaseContext_log.ldf
+/.vs/MakeMeUpzz/config/applicationhost.config
+/MakeMeUpzz/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/MakeMeUpzz/obj/Debug/MakeMeUpzz.csproj.AssemblyReference.cache
