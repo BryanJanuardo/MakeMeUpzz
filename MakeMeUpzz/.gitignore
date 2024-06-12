@@ -22,7 +22,10 @@ bld/
 [Bb]in/
 [Oo]bj/
 bin/
-MakeMeUpzz/obj/
+MakeMeUpzz/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+MakeMeUpzz/obj/Debug/MakeMeUpzz.csproj.AssemblyReference.cache
+.vs/MakeMeUpzz/config/applicationhost.config
+
 # Visual Studio 2015 cache/options directory
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
