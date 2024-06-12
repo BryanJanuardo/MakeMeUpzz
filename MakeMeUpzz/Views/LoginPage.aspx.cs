@@ -1,4 +1,5 @@
-﻿using MakeMeUpzz.Models;
+﻿using MakeMeUpzz.Controllers;
+using MakeMeUpzz.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace MakeMeUpzz.Views
                 return false;
             }
 
-            User validateUser = (from User in db.Users where User.UserEmail.ToUpper().Equals(email.ToUpper()) select User).FirstOrDefault();
+            User validateUser = UserController.GetUserByEmail(email);
 
             if (validateUser == null)
             {

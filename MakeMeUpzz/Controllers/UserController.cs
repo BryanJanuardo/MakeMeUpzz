@@ -67,5 +67,10 @@ namespace MakeMeUpzz.Controllers
             List<User> users = UserRepository.getAllUser();
             return users;
         }
+
+        public static User GetUserByEmail(string email)
+        {
+            return (from User in UserRepository.getAllUser() where User.UserEmail.ToUpper().Equals(email.ToUpper()) select User).FirstOrDefault();
+        }
     }
 }
