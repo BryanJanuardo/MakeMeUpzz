@@ -32,16 +32,18 @@ namespace MakeMeUpzz.Handlers
             if (carts.Count() == 0)
                 return false;
 
-            CartRepository.emptyCartByUserId(userId);
-
             TransactionHeader transactionHeader = TransactionFactory.createTransactionHeader(generateNewTransactionId(), userId, DateTime.Now, "Unhandled");
             TransactionRepository.insertTransactionHeaders(transactionHeader);
 
             foreach (Cart cart in carts)
             {
-                TransactionDetail td = TransactionFactory.createTransactionDetail(transactionHeader.TransactionID, cart.MakeupID, cart.Quantity);
+                int transactionId = transactionHeader.TransactionID;
+                int makeupId = cart.MakeupID;
+                int quantity = cart.Quantity;
+                TransactionDetail td = TransactionFactory.createTransactionDetail(transactionId, makeupId, quantity);
                 TransactionRepository.insertTransactionDetails(td);
             }
+            CartRepository.emptyCartByUserId(userId);
             return true;
         }
     }

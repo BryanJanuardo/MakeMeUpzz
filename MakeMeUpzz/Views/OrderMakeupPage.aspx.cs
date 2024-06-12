@@ -12,6 +12,14 @@ namespace MakeMeUpzz.Views
 {
     public partial class OrderMakeupPage : System.Web.UI.Page
     {
+        protected void setDefaultValueMakeupQuantity()
+        {
+            for (int i = 0; i < MakeupController.getAllMakeup().Count; i++)
+            {
+                var row = MakeupGridView.Rows[i].Cells[7].FindControl("MakeupQuantityInput") as TextBox;
+                row.Text = "0";
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             User user = Session["user"] as User;
@@ -19,6 +27,7 @@ namespace MakeMeUpzz.Views
             {
                 MakeupGridView.DataSource = MakeupController.getAllMakeupSortDescByRating();
                 MakeupGridView.DataBind();
+                setDefaultValueMakeupQuantity();
             }
         }
 
@@ -31,13 +40,15 @@ namespace MakeMeUpzz.Views
                 int rowIndex = row.RowIndex;
                  
                 int makeupId = Convert.ToInt32(MakeupGridView.Rows[rowIndex].Cells[0].Text);
-                int makeupQuantity = Convert.ToInt32(MakeupGridView.Rows[rowIndex].Cells[7].FindControl("MakeupQuantityInput") as TextBox);
+                int makeupQuantity = Convert.ToInt32((MakeupGridView.Rows[rowIndex].Cells[7].FindControl("MakeupQuantityInput") as TextBox).Text);
                 User user = Session["user"] as User;
                 int userId = user.UserID;
 
                 if (CartController.quantityValidation(makeupQuantity)){
                     CartController.addMakeupToCart(userId, makeupId, makeupQuantity);
+                    return;
                 }
+                ErrorLabel.Text = "Quantity must be more than 0 to order!";
             }
         }
 
@@ -50,7 +61,6 @@ namespace MakeMeUpzz.Views
         protected void CheckoutButton_Click(object sender, EventArgs e)
         {
             User user = Session["user"] as User;
-            // tambain boolean variabel
             ErrorLabel.Text = TransactionController.checkoutCart(user.UserID);
 
         }

@@ -12,7 +12,7 @@
             <asp:TemplateField HeaderText="Action">
                 <ItemTemplate>
                 <div>
-                    <asp:TextBox ID="MakeupQuantityInput" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="MakeupQuantityInput" runat="server" CommandName="MakeupQuantity"></asp:TextBox>
                     <asp:Button ID="OrderButton" runat="server" Text="Order" CommandName="Order" />
                 </div>
                 </ItemTemplate>

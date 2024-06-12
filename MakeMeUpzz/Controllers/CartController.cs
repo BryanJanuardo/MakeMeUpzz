@@ -11,7 +11,7 @@ namespace MakeMeUpzz.Controllers
     {
         public static bool quantityValidation(int quantity)
         {
-            if (quantity < 0)
+            if (quantity <= 0)
                 return false;
             return true;
         }

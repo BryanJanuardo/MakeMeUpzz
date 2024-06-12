@@ -56,6 +56,11 @@ namespace MakeMeUpzz.Controllers
             return MakeupHandler.getAllMakeup().OrderByDescending(makeup => makeup.MakeupBrand.MakeupBrandRating).ToList();
         }
 
+        public static List<Makeup> getAllMakeup()
+        {
+            return MakeupHandler.getAllMakeup().ToList();
+        }
+
         public static Makeup getMakeupById(int id)
         {
             return MakeupHandler.getMakeupById(id);
