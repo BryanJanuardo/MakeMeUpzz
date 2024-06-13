@@ -89,7 +89,6 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
-    <Content Include="TextFile1.txt" />
     <Content Include="Views\HandleTransactionPage.aspx" />
     <Content Include="Views\HomePage.aspx" />
     <Content Include="Views\InsertMakeupBrandPage.aspx" />
