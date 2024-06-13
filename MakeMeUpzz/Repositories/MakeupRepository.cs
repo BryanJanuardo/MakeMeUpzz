@@ -43,8 +43,8 @@ namespace MakeMeUpzz.Repositories
         public static void deleteMakeup(int id)
         {
             DatabaseContextEntities db = Singleton.getDB();
-            Makeup makeup = db.Makeups.Find(id);
-            db.Makeups.Remove(makeup);
+            Makeup Makeup = (from makeup in db.Makeups where makeup.MakeupID == id select makeup).FirstOrDefault();
+            db.Makeups.Remove(Makeup);
             db.SaveChanges();
         }
     }

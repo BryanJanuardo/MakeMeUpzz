@@ -1,5 +1,6 @@
 ﻿using MakeMeUpzz.Controllers;
 using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -40,10 +41,13 @@ namespace MakeMeUpzz.Views
             string password = PasswordTxt.Text.ToString();
             string confirmPassword = ConfirmTxt.Text.ToString();
             string userDOB = DOBDate.Text.ToString();
-            FailLbl.Text = UserController.ValidationCheck(email, password, confirmPassword, username, userDOB, GetGender());
 
-            if (FailLbl.Text != "")
+            Response<User> response = UserController.ValidationCheck(email, password, confirmPassword, username, userDOB, GetGender());
+            if(response.success == false)
+            {
+                FailLbl.Text = response.message;
                 return;
+            }
 
             UserController.insertNewUser(email, password, username, userDOB, GetGender());
             Response.Redirect("LoginPage.aspx");

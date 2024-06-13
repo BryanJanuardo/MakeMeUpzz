@@ -1,6 +1,8 @@
 ﻿using MakeMeUpzz.Factories;
 using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using MakeMeUpzz.Repositories;
+using MakeMeUpzz.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +12,10 @@ namespace MakeMeUpzz.Handlers
 {
     public class MakeupTypeHandler
     {
-        private static int generateNewMakeupTypeId()
+        private static Response<int> generateNewMakeupTypeId()
         {
             int newId = 1;
-            int latestId = (from x in getAllMakeupType() select x.MakeupTypeID).ToList().LastOrDefault();
+            int latestId = (from x in MakeupTypeRepository.getAllMakeupType() select x.MakeupTypeID).ToList().LastOrDefault();
 
             if (latestId == 0)
             {
@@ -24,30 +26,42 @@ namespace MakeMeUpzz.Handlers
                 newId = latestId + 1;
             }
 
-            return newId;
+            return Response<int>.createResponse("Generate new Id success", true, newId);
         }
 
-        public static List<MakeupType> getAllMakeupType()
+        public static Response<List<MakeupType>> getAllMakeupType()
         {
             List<MakeupType> makeupTypes = MakeupTypeRepository.getAllMakeupType();
-            return makeupTypes;
+            return Response<List<MakeupType>>.createResponse("Get all makeup types success!", true, makeupTypes);
         }
 
-        public static int getMakeupTypeIdByName(string name)
+        public static Response<int> getMakeupTypeIdByName(string name)
         {
             int MakeupTypeId = MakeupTypeRepository.getMakeupTypeIdByName(name);
-            return MakeupTypeId;
+            return Response<int>.createResponse("Get makeup type id by name success!", true, MakeupTypeId);
         }
 
-        public static void insertNewMakeupType(string name)
+        public static Response<MakeupType> insertNewMakeupType(string name)
         {
-            MakeupType newMakeupType = MakeupTypeFactory.createMakeupType(generateNewMakeupTypeId(), name);
+            MakeupType newMakeupType = MakeupTypeFactory.createMakeupType(generateNewMakeupTypeId().value, name);
             MakeupTypeRepository.insertNewMakeupType(newMakeupType);
+
+            return Response<MakeupType>.createResponse("Insert makeup type success!", true, null);
         }
 
-        public static void updateMakeupType(int id, string name)
+        public static Response<MakeupType> updateMakeupType(int id, string name)
         {
             MakeupTypeRepository.updateMakeupType(id, name);
+
+            return Response<MakeupType>.createResponse("Update makeup type success!", true, null);
+        }
+
+        public static Response<List<string>> getAllMakeupTypeName()
+        {
+            List<MakeupType> makeupTypes = MakeupTypeRepository.getAllMakeupType();
+            List<string> makeupTypesName = (from type in makeupTypes select type.MakeupTypeName).ToList();
+
+            return Response<List<string>>.createResponse("Get all makeup type name success!", true, makeupTypesName);
         }
     }
 }

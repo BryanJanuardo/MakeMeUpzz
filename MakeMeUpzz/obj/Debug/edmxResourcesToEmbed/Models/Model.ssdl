@@ -90,7 +90,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Makeups_ToMakeupBrands">
-    <End Role="MakeupBrands" Type="Self.MakeupBrands" Multiplicity="1" />
+    <End Role="MakeupBrands" Type="Self.MakeupBrands" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Makeups" Type="Self.Makeups" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="MakeupBrands">
@@ -102,7 +104,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Makeups_ToMakeupTypes">
-    <End Role="MakeupTypes" Type="Self.MakeupTypes" Multiplicity="1" />
+    <End Role="MakeupTypes" Type="Self.MakeupTypes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Makeups" Type="Self.Makeups" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="MakeupTypes">
@@ -114,7 +118,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_TransactionDetails_ToMakeups">
-    <End Role="Makeups" Type="Self.Makeups" Multiplicity="1" />
+    <End Role="Makeups" Type="Self.Makeups" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="TransactionDetails" Type="Self.TransactionDetails" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Makeups">
@@ -126,7 +132,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_TransactionDetails_ToTransactionHeaders">
-    <End Role="TransactionHeaders" Type="Self.TransactionHeaders" Multiplicity="1" />
+    <End Role="TransactionHeaders" Type="Self.TransactionHeaders" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="TransactionDetails" Type="Self.TransactionDetails" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TransactionHeaders">
@@ -138,7 +146,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_TransactionHeaders_ToUsers">
-    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="TransactionHeaders" Type="Self.TransactionHeaders" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Users">

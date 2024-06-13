@@ -1,5 +1,6 @@
 ﻿using MakeMeUpzz.Handlers;
 using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using MakeMeUpzz.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,32 +11,34 @@ namespace MakeMeUpzz.Controllers
 {
     public class TransactionController
     {
-        public static string checkoutCart(int userId)
+        public static Response<Cart> checkoutCart(int userId)
         {
-            if(!TransactionHandler.checkoutCart(userId))
-                return "Cart is empty!";
-
-            return "Cart Has been Checkout!";
+            Response<Cart> response = TransactionHandler.checkoutCart(userId);
+            return response;
         }
 
-        public static List<TransactionHeader> getAllTransactionHeaders()
+        public static Response<List<TransactionHeader>> getAllTransactionHeaders()
         {
-            return TransactionHandler.getAllTransactionHeader();
+            Response<List<TransactionHeader>> response = TransactionHandler.getAllTransactionHeader();
+            return response;
         }
 
-        public static List<TransactionHeader> getAllTransactionByUserID(int userId)
+        public static Response<List<TransactionHeader>> getAllTransactionByUserID(int userId)
         {
-            return TransactionHandler.getAllTransactionByUserID(userId);
+            Response<List<TransactionHeader>> response = TransactionHandler.getAllTransactionByUserID(userId);
+            return response;
         }
 
-        public static List<TransactionHeader> getAllUnhandledTransaction()
+        public static Response<List<TransactionHeader>> getAllUnhandledTransaction()
         {
-            return TransactionHandler.getAllUnhandledTransaction();
+            Response<List<TransactionHeader>> response = TransactionHandler.getAllUnhandledTransaction();
+            return response;
         }
 
-        public static TransactionHeader getTransactionHeaderByID(int id)
+        public static Response<TransactionHeader> getTransactionHeaderByID(int id)
         {
-            return TransactionHandler.getTransactionHeaderByID(id);
+            Response<TransactionHeader> response = TransactionHandler.getTransactionHeaderByID(id);
+            return response;
         }
 
         public static Response<TransactionHeader> updateStatus(TransactionHeader transactionHeader)
@@ -44,9 +47,10 @@ namespace MakeMeUpzz.Controllers
             return response;
         }
 
-        public static List<object> showDetail(int transactionID)
+        public static Response<List<object>> showDetail(int transactionID)
         {
-            return TransactionHandler.showDetail(transactionID);
+            Response<List<object>> response = TransactionHandler.showDetail(transactionID);
+            return response;
         }
     }
 }

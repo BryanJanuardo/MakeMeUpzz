@@ -1,5 +1,6 @@
 ﻿using MakeMeUpzz.Handlers;
 using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,70 +10,75 @@ namespace MakeMeUpzz.Controllers
 {
     public class MakeupController
     {
-        public static string validationNewMakeup(string name, string price, string weight, string type, string brand)
+        public static Response<Makeup> validationNewMakeup(string name, int price, int weight, string type, string brand)
         {
-            if (name == null)
+            try
             {
-                return "Name must be filled!";
+                if (name == string.Empty)
+                {
+                    return Response<Makeup>.createResponse("Name must be filled!", false, null);
+                }
+                else if (type == string.Empty)
+                {
+                    return Response<Makeup>.createResponse("Type must be filled!", false, null);
+                }
+                else if (brand == string.Empty)
+                {
+                    return Response<Makeup>.createResponse("Brand must be filled!", false, null);
+                }
+                else if (name.Length < 1 || name.Length > 99)
+                {
+                    return Response<Makeup>.createResponse("Name length must be 1-99!", false, null);
+                }
+                else if (price < 1)
+                {
+                    return Response<Makeup>.createResponse("Price must be more or equal than 1!", false, null);
+                }
+                else if (weight < 1 || weight > 1500)
+                {
+                    return Response<Makeup>.createResponse("Weight must be 1-1500!", false, null);
+                }
+            }
+            catch(Exception e)
+            {
+                return Response<Makeup>.createResponse("Input Price and Weight must be number", false, null);
             }
 
-            else if (price == null)
-            {
-                return "Price must be filled!";
-            }
-            else if (weight == null)
-            {
-                return "Weight must be filled!";
-            }
-            else if (type == null)
-            {
-                return "Type must be filled!";
-            }
-            else if (brand == null)
-            {
-                return "Brand must be filled!";
-            }
-            else if (name.Length < 1 || name.Length > 99)
-            {
-                return "Name length must be 1-99!";
-            }
-            else if (Convert.ToInt32(price) < 1)
-            {
-                return "Price must be more or equal than 1!";
-            }
-            else if (Convert.ToInt32(weight) < 1 || Convert.ToInt32(weight) > 1500)
-            {
-                return "Price must be 1-1500";
-            }
-
-            return "";
+            return Response<Makeup>.createResponse("Input validated!", true, null);
         }
-        public static void insertNewMakeup(string name, int price, int weight, string type, string brand)
+        public static Response<Makeup> insertNewMakeup(string name, int price, int weight, string type, string brand)
         {
-            MakeupHandler.insertNewMakeup(name, price, weight, type, brand);
+            Response<Makeup> response = MakeupHandler.insertNewMakeup(name, price, weight, type, brand);
+            return response;
         }
-        public static List<Makeup> getAllMakeupSortDescByRating()
+        public static Response<List<Makeup>> getAllMakeupSortDescByRating()
         {
-            return MakeupHandler.getAllMakeup().OrderByDescending(makeup => makeup.MakeupBrand.MakeupBrandRating).ToList();
+            Response<List<Makeup>> response = MakeupHandler.getAllMakeup();
+            response.value = response.value.OrderByDescending(makeup => makeup.MakeupBrand.MakeupBrandRating).ToList();
+            return response;
         }
 
-        public static List<Makeup> getAllMakeup()
+        public static Response<List<Makeup>> getAllMakeup()
         {
-            return MakeupHandler.getAllMakeup().ToList();
+            Response<List<Makeup>> response = MakeupHandler.getAllMakeup();
+            return response;
         }
 
-        public static Makeup getMakeupById(int id)
+        public static Response<Makeup> getMakeupById(int id)
         {
-            return MakeupHandler.getMakeupById(id);
+            Response<Makeup> response = MakeupHandler.getMakeupById(id);
+            return response;
         }
 
-        public static void editMakeup(int id, string name, int price, int weight, string type, string brand)
+        public static Response<Makeup> editMakeup(int id, string name, int price, int weight, string type, string brand)
         {
-            MakeupHandler.editMakeup(id, name, price, weight, type, brand);
+            Response<Makeup> response = MakeupHandler.editMakeup(id, name, price, weight, type, brand);
+            return response;
         }
-        public static void deleteMakeup(int id)
+        public static Response<Makeup> deleteMakeup(int id)
         {
-            MakeupHandler.deleteMakeup(id);
+            Response<Makeup> response = MakeupHandler.deleteMakeup(id);
+            return response;
         }
     }
 }

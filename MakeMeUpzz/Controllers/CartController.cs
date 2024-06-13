@@ -1,5 +1,6 @@
 ﻿using MakeMeUpzz.Handlers;
 using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,26 +10,24 @@ namespace MakeMeUpzz.Controllers
 {
     public class CartController
     {
-        public static bool quantityValidation(int quantity)
+        public static Response<Cart> quantityValidation(int quantity)
         {
+            
             if (quantity <= 0)
-                return false;
-            return true;
+                return Response<Cart>.createResponse("Quantity must more than 0!", false, null);
+            return Response<Cart>.createResponse("Input Validated", true, null);
         }
 
-        public static void addMakeupToCart(int userId, int makeupId, int makeupQuantity)
+        public static Response<Cart> addMakeupToCart(int userId, int makeupId, int makeupQuantity)
         {
-            CartHandler.addMakeupToCart(userId, makeupId, makeupQuantity);
+            Response<Cart> response = CartHandler.addMakeupToCart(userId, makeupId, makeupQuantity);
+            return response;
         }
 
-        public static string resetCart(int userId)
+        public static Response<Cart> resetCart(int userId)
         {
-            if (!CartHandler.resetCart(userId))
-            {
-                return "Cart already empty";
-            }
-
-            return "Reset Cart Successfully!";
+            Response<Cart> response = CartHandler.resetCart(userId);
+            return response;
         }
     }
 }

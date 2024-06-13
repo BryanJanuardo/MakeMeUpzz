@@ -13,10 +13,10 @@ namespace MakeMeUpzz.Repositories
             DatabaseContextEntities db = Singleton.getDB();
             return db.TransactionHeaders.ToList().LastOrDefault();
         }
-        public static TransactionHeader getAllTransactionByUserID(int userID)
+        public static List<TransactionHeader> getAllTransactionByUserID(int userID)
         {
             DatabaseContextEntities db = Singleton.getDB();
-            TransactionHeader header = db.TransactionHeaders.Find(userID);
+            List<TransactionHeader> header = (from th in db.TransactionHeaders where th.UserID == userID select th).ToList();
             return header;
         }
         public static List<TransactionHeader> getAllTransactionHeaders()
@@ -72,6 +72,11 @@ namespace MakeMeUpzz.Repositories
             db.SaveChanges();
         }
 
+        public static List<TransactionDetail> getAllTransactionDetail()
+        {
+            DatabaseContextEntities db = Singleton.getDB();
+            return db.TransactionDetails.ToList();
+        }
         public static void insertTransactionDetails(TransactionDetail td)
         {
             DatabaseContextEntities db = Singleton.getDB();

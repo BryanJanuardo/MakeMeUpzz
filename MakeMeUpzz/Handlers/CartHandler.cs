@@ -1,5 +1,6 @@
 ﻿using MakeMeUpzz.Factories;
 using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using MakeMeUpzz.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace MakeMeUpzz.Handlers
 {
     public class CartHandler
     {
-        private static int generateNewMakeupId()
+        private static Response<int> generateNewCartId()
         {
             int newId = 1;
             int latestId = (from cart in CartRepository.getAllCart() select cart.CartID).ToList().LastOrDefault();
@@ -24,23 +25,26 @@ namespace MakeMeUpzz.Handlers
                 newId = latestId + 1;
             }
 
-            return newId;
+            return Response<int>.createResponse("Generate new Id success", true, newId);
         }
 
-        public static void addMakeupToCart(int userId, int makeupId, int makeupQuantity)
+        public static Response<Cart> addMakeupToCart(int userId, int makeupId, int makeupQuantity)
         {
-            Cart newCart = CartFactory.createCart(generateNewMakeupId(), userId, makeupId, makeupQuantity);
+            Cart newCart = CartFactory.createCart(generateNewCartId().value, userId, makeupId, makeupQuantity);
             CartRepository.addMakeupToCart(newCart);
+
+            return Response<Cart>.createResponse("Add cart success!", true, null);
         }
 
-        public static bool resetCart(int userId)
+        public static Response<Cart> resetCart(int userId)
         {
             List<Cart> carts = CartRepository.getAllCartsByUserId(userId);
             if(carts.Count() == 0)
-                return false;
+                return Response<Cart>.createResponse("Cart empty!", false, null);
 
             CartRepository.emptyCartByUserId(userId);
-            return true;
+
+            return Response<Cart>.createResponse("Cart emptied success!", true, null);
         }
     }
 }

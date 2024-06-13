@@ -14,7 +14,7 @@ namespace MakeMeUpzz.Views
         {
             if(IsPostBack == false)
             {
-                MakeupGridView.DataSource = MakeupController.getAllMakeupSortDescByRating();
+                MakeupGridView.DataSource = MakeupController.getAllMakeupSortDescByRating().value;
                 MakeupGridView.DataBind();
             }
         }
@@ -46,7 +46,7 @@ namespace MakeMeUpzz.Views
             GridViewRow row = MakeupGridView.Rows[e.RowIndex];
             int id = Convert.ToInt32(row.Cells[0].Text);
             MakeupController.deleteMakeup(id);
-            MakeupGridView.DataSource = MakeupController.getAllMakeupSortDescByRating();
+            MakeupGridView.DataSource = MakeupController.getAllMakeupSortDescByRating().value;
             MakeupGridView.DataBind();
         }
     }

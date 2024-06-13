@@ -42,6 +42,9 @@
                 <asp:Label ID="FailLbl" runat="server" Text="" Style="Color: Red"></asp:Label>
             </div>
             <asp:Button ID="RegistBtn" runat="server" Text="Sign Up" OnClick="RegistBtn_Click" />
+            <div>
+                <p>Already have an account? <a href="LoginPage.aspx">Login Here.</a></p>
+            </div>
         </div>
     </form>
 </body>
