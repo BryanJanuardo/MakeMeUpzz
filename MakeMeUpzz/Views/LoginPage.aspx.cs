@@ -14,55 +14,7 @@ namespace MakeMeUpzz.Views
         
         protected void Page_Load(object sender, EventArgs e)
         {
-<<<<<<< Updated upstream
-            FailLbl.Visible = false;
-        }
-
-        protected bool InputValidate(string email, string password, User user)
-        {
-            if (string.IsNullOrEmpty(email))
-            {
-                FailLbl.Text = "Email must be filled";
-                FailLbl.Visible = true;
-                return false;
             }
-
-            if (string.IsNullOrEmpty(password))
-            {
-                FailLbl.Text = "Password must be filled";
-                FailLbl.Visible = true;
-                return false;
-            }
-
-            User validateUser = (from User in db.Users where User.UserEmail.ToUpper().Equals(email.ToUpper()) select User).FirstOrDefault();
-
-            if (validateUser == null)
-            {
-                FailLbl.Text = "Incorrect email or password";
-                FailLbl.Visible = true;
-                return false;
-            }
-            else if (!validateUser.UserEmail.ToUpper().Equals(email.ToUpper()))
-            {
-                FailLbl.Text = "Incorrect email or password";
-                FailLbl.Visible = true;
-                return false;
-            }
-
-            if (!validateUser.UserPassword.Equals(password))
-            {
-                FailLbl.Text = "Incorrect email or password";
-                FailLbl.Visible = true;
-                return false;
-            }
-
-            FailLbl.Text = "";
-            FailLbl.Visible = false;
-
-            return true;
-=======
->>>>>>> Stashed changes
-        }
 
         protected void LoginBtn_Click(object sender, EventArgs e)
         {
@@ -70,7 +22,7 @@ namespace MakeMeUpzz.Views
             string password = PasswordTxt.Text;
             bool remember = RememberMeBox.Checked;
 
-            FailLbl.Text = LoginController.loginValidation(email, password);
+            FailLbl.Text = UserController.loginValidation(email, password);
 
             if (FailLbl.Text != "")
                 return;
