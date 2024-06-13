@@ -16,13 +16,10 @@
                 <asp:Label ID="GenderLbl" runat="server" Text="Gender"></asp:Label>
                 <div>
                     <asp:RadioButtonList ID="rblGender" runat="server">
-                        <%--<asp:ListItem ID="RadioNone" Text="Select Gender" />--%>
+                        <asp:ListItem ID="RadioNone" Text="Select Gender" />
                         <asp:ListItem ID="RadioMale" Text="Male" />
                         <asp:ListItem ID="RadioFemale" Text="Female" />
                     </asp:RadioButtonList>
-<%--                    <asp:RadioButton ID="RadioNone" Text="None" Checked="True" GroupName="GenderRadio" runat="server" />
-                    <asp:RadioButton ID="RadioMale" Text="Male" GroupName="GenderRadio" runat="server" />
-                    <asp:RadioButton ID="RadioFemale" runat="server" Text="Female" GroupName="GenderRadio" />--%>
                 </div>
             </div>
             <div>
@@ -35,9 +32,9 @@
             </div>
             <asp:Button ID="updateProfileBtn" Text="Update Profile" runat="server" OnClick="updateProfileBtn_Click" />
         </div>
-
-        <%-- update password --%>
     </div>
+
+
     <h2>Update password</h2>
     <div>
         <asp:Label ID="PasswordLbl" runat="server" Text="Password"></asp:Label>

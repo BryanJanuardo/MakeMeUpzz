@@ -69,6 +69,15 @@ namespace MakeMeUpzz.Views
         protected global::System.Web.UI.WebControls.RadioButtonList rblGender;
 
         /// <summary>
+        /// RadioNone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListItem RadioNone;
+
+        /// <summary>
         /// RadioMale control.
         /// </summary>
         /// <remarks>

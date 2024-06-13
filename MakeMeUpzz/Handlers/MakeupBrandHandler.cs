@@ -11,11 +11,11 @@ namespace MakeMeUpzz.Handlers
 {
     public class MakeupBrandHandler
     {
-        public static Response<List<MakeupBrand>> getAllMakeupBrand()
+        
         private static int generateNewMakeupBrandId()
         {
             int newId = 1;
-            int latestId = (from x in getAllMakeupBrand() select x.MakeupBrandID).ToList().LastOrDefault();
+            int latestId = (from x in MakeupBrandRepository.getAllMakeUpBrand() select x.MakeupBrandID).ToList().LastOrDefault();
 
             if (latestId == 0)
             {
@@ -29,7 +29,7 @@ namespace MakeMeUpzz.Handlers
             return newId;
         }
 
-        public static List<MakeupBrand> getAllMakeupBrand()
+        public static Response<List<MakeupBrand>> getAllMakeupBrand()
         {
             List<MakeupBrand> makeupBrands = MakeupBrandRepository.getAllMakeUpBrand();
             return Response<List<MakeupBrand>>.createResponse("Get all makeup brands success!", true, makeupBrands);

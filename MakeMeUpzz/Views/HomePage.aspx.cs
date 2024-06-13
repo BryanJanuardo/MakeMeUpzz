@@ -34,9 +34,9 @@ namespace MakeMeUpzz.Views
 
 
                 string role = UserController.GetCurrentUserRole(user);
-                roleLbl.Text = $"Your role is {role}";
+                roleLbl.Text = "Your role is " + role;
 
-                if (role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+                if (role == "Admin")
                 {
                     customerData.Visible = true;
                     UserController.LoadCustomerData(customerData);
