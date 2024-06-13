@@ -72,5 +72,42 @@ namespace MakeMeUpzz.Controllers
         {
             return (from User in UserRepository.getAllUser() where User.UserEmail.ToUpper().Equals(email.ToUpper()) select User).FirstOrDefault();
         }
+
+        public static User getUserByCredentials(string email, string password)
+        {
+            return (from User in UserRepository.getAllUser() where User.UserEmail.ToUpper().Equals(email.ToUpper()) && User.UserPassword.Equals(password) select User).FirstOrDefault();
+
+        }
+
+        public static string loginValidation(string email, string password)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                return "Email must be filled";
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                return "Password must be filled";
+            }
+
+            User validateUser = UserController.GetUserByEmail(email);
+
+            if (validateUser == null)
+            {
+                return "Incorrect email or password";
+            }
+            else if (!validateUser.UserEmail.ToUpper().Equals(email.ToUpper()))
+            {
+                return "Incorrect email or password";
+            }
+
+            if (!validateUser.UserPassword.Equals(password))
+            {
+                return "Incorrect email or password";
+            }
+
+            return "";
+        }
     }
 }
