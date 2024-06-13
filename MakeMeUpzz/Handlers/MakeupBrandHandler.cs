@@ -44,5 +44,15 @@ namespace MakeMeUpzz.Handlers
             MakeupBrand newMakeupBrand = MakeupBrandFactory.createMakeupBrand(generateNewMakeupBrandId(), name, rating);
             MakeupBrandRepository.insertNewMakeupBrand(newMakeupBrand);
         }
+
+        public static void editNewMakeupBrand(int id, string name, int rating)
+        {
+            MakeupBrand newMakeupBrand = MakeupBrandFactory.createMakeupBrand(id, name, rating);
+            MakeupBrandRepository.editMakeupBrand(newMakeupBrand);
+        }
+        public static void deleteMakeupBrand(int id)
+        {
+            MakeupBrandRepository.deleteMakeupBrand(id);
+        }
     }
 }

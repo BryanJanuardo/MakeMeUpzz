@@ -39,5 +39,15 @@ namespace MakeMeUpzz.Handlers
             List<User> users = UserRepository.getAllUser();
             return users;
         }
+
+        public static string updateUserProfile(int userID, string username, string email, string gender, DateTime dob)
+        {
+            return UserRepository.updateUserProfile(userID, username, email, gender, dob);
+        }
+
+        public static void updateUserPassword(int userID, string oldPassword, string newPassword)
+        {
+            UserRepository.updateUserPassword(userID, oldPassword, newPassword);    
+        }
     }
 }

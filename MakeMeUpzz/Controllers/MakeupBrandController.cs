@@ -1,4 +1,5 @@
 ﻿using MakeMeUpzz.Handlers;
+using MakeMeUpzz.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,8 +38,17 @@ namespace MakeMeUpzz.Controllers
 
         public static void insertNewMakeupBrand(string name, int rating)
         {
-            MakeupBrandHandler.insertNewMakeupBrand(name, rating);  
-            //MakeupHandler.insertNewMakeup(name, price, weight, type, brand);
+            MakeupBrandHandler.insertNewMakeupBrand(name, rating);
+        }
+
+        public static void editMakeupBrand(int id, string name, int rating)
+        {
+            MakeupBrandHandler.editNewMakeupBrand(id, name, rating);
+        }
+
+        public static void deleteMakeupBrand(int id)
+        {
+            MakeupBrandHandler.deleteMakeupBrand(id);
         }
     }
 }
