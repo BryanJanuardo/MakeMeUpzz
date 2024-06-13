@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.EnterpriseServices.Internal;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace MakeMeUpzz.Controllers
 {
@@ -108,6 +109,18 @@ namespace MakeMeUpzz.Controllers
             }
 
             return "";
+        }
+
+        public static string GetCurrentUserRole(User user)
+        {
+            return user.UserRole;
+        }
+
+        public static void LoadCustomerData(GridView customerData)
+        {
+            var customerDataList = getAllUser();
+            customerData.DataSource = customerDataList;
+            customerData.DataBind();
         }
     }
 }

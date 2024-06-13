@@ -1,4 +1,5 @@
-﻿using MakeMeUpzz.Models;
+﻿using MakeMeUpzz.Controllers;
+using MakeMeUpzz.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,16 @@ namespace MakeMeUpzz.Views
                 else
                 {
                     user = (User) Session["user"];
+                }
+
+
+                string role = UserController.GetCurrentUserRole(user);
+                roleLbl.Text = $"Your role is {role}";
+
+                if (role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+                {
+                    customerData.Visible = true;
+                    UserController.LoadCustomerData(customerData);
                 }
             }
         }
