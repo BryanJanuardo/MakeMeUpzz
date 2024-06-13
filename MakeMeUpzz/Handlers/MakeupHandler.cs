@@ -1,5 +1,6 @@
 ﻿using MakeMeUpzz.Factories;
 using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using MakeMeUpzz.Repositories;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace MakeMeUpzz.Handlers
 {
     public class MakeupHandler
     {
-        private static int generateNewMakeupId()
+        private static Response<int> generateNewMakeupId()
         {
             int newId = 1;
             int latestId = (from makeup in MakeupRepository.getAllMakeup() select makeup.MakeupID).ToList().LastOrDefault();
@@ -25,37 +26,45 @@ namespace MakeMeUpzz.Handlers
                 newId = latestId + 1;
             }
 
-            return newId;
+            return Response<int>.createResponse("New Makeup Id Generated!", true, newId);
         }
-        public static List<Makeup> getAllMakeup()
+        public static  Response<List<Makeup>> getAllMakeup()
         {
             List<Makeup> makeups = MakeupRepository.getAllMakeup();
-            return makeups;
+            return Response<List<Makeup>>.createResponse("Get all makeups success!", true, makeups);
         }
-
-        public static void insertNewMakeup(string name, int price, int weight, string type, string brand)
+        public static Response<Makeup> insertNewMakeup(string name, int price, int weight, string type, string brand)
         {
-            int typeId = MakeupTypeHandler.getMakeupTypeIdByName(type);
-            int brandId = MakeupBrandHandler.getMakeupBrandIdByName(brand);
-            Makeup newMakeup = MakeupFactory.createMakeup(generateNewMakeupId(),name, price, weight, typeId, brandId);
+            int typeId = MakeupTypeHandler.getMakeupTypeIdByName(type).value;
+            int brandId = MakeupBrandHandler.getMakeupBrandIdByName(brand).value;
+            Makeup newMakeup = MakeupFactory.createMakeup(generateNewMakeupId().value, name, price, weight, typeId, brandId);
+
             MakeupRepository.insertNewMakeup(newMakeup);
+
+            return Response<Makeup>.createResponse("Makeup Inserted!", true, null);
         }
 
-        public static Makeup getMakeupById(int id)
+        public static Response<Makeup> getMakeupById(int id)
         {
-            return MakeupRepository.getMakeupById(id);
+            Makeup makeup = MakeupRepository.getMakeupById(id);
+
+            return Response<Makeup>.createResponse("Get makeup by id success!", true, makeup);
         }
 
-        public static void editMakeup(int id, string name, int price, int weight, string type, string brand)
+        public static Response<Makeup> editMakeup(int id, string name, int price, int weight, string type, string brand)
         {
-            int typeId = MakeupTypeHandler.getMakeupTypeIdByName(type);
-            int brandId = MakeupBrandHandler.getMakeupBrandIdByName(brand);
+            int typeId = MakeupTypeHandler.getMakeupTypeIdByName(type).value;
+            int brandId = MakeupBrandHandler.getMakeupBrandIdByName(brand).value;
             Makeup newMakeup = MakeupFactory.createMakeup(id, name, price, weight, typeId, brandId);
             MakeupRepository.editMakeup(newMakeup);
+
+            return Response<Makeup>.createResponse("Makeup Edited!", true, null);
         }
-        public static void deleteMakeup(int id)
+        public static Response<Makeup> deleteMakeup(int id)
         {
             MakeupRepository.deleteMakeup(id);
+
+            return Response<Makeup>.createResponse("Makeup Deleted!", true, null);
         }
     }
 }

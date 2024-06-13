@@ -1,4 +1,6 @@
 ﻿using MakeMeUpzz.Handlers;
+using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,34 +10,36 @@ namespace MakeMeUpzz.Controllers
 {
     public class MakeupTypeController
     {
-        public static List<string> getAllMakeupTypeName()
+        public static Response<List<string>> getAllMakeupTypeName()
         {
-            List<string> makeupTypeNames = (from type in MakeupTypeHandler.getAllMakeupType() select type.MakeupTypeName).ToList();
-            return makeupTypeNames;
+            Response<List<string>> response = MakeupTypeHandler.getAllMakeupTypeName();
+            return response;
         }
 
-        public static void insertNewMakeupType(string name)
+        public static Response<MakeupType> insertNewMakeupType(string name)
         {
-            MakeupTypeHandler.insertNewMakeupType(name);
+            Response<MakeupType> response = MakeupTypeHandler.insertNewMakeupType(name);
+            return response;
         }
 
-        public static void updateMakeupType(int id, string name)
+        public static Response<MakeupType> updateMakeupType(int id, string name)
         {
-            MakeupTypeHandler.updateMakeupType(id, name);
+            Response<MakeupType> response = MakeupTypeHandler.updateMakeupType(id, name);
+            return response;
         }
 
-        public static string newMakeupTypeValidation(string name)
+        public static Response<MakeupType> newMakeupTypeValidation(string name)
         {
             if (name == null)
             {
-                return "Name must be filled!";
+                return Response<MakeupType>.createResponse("Name must be filled!", false, null);
             }
             else if (name.Length < 1 || name.Length > 99)
             {
-                return "Name length must be 1-99!";
+                return Response<MakeupType>.createResponse("Name length must be 1-99!", false, null);
             }
 
-            return "";
+            return Response<MakeupType>.createResponse("Validation makeup type success!", true, null);
         }
     }
 }

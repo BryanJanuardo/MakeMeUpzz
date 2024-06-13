@@ -1,4 +1,5 @@
-﻿using MakeMeUpzz.Models;
+﻿using MakeMeUpzz.Controllers;
+using MakeMeUpzz.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,6 @@ namespace MakeMeUpzz.Views
 {
     public partial class HomePage : System.Web.UI.Page
     {
-        private DatabaseContextEntities db = new DatabaseContextEntities();
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -23,8 +23,8 @@ namespace MakeMeUpzz.Views
                 User user;
                 if (Session["user"] == null)
                 {
-                    var id = Int32.Parse(Request.Cookies["User_Cookie"].Value);
-                    user = (from x in db.Users where x.UserID == id select x).FirstOrDefault();
+                    var id = Convert.ToInt32(Request.Cookies["User_Cookie"].Value);
+                    user = UserController.getUserByUserId(id).value;
                     Session["user"] = user;
                 }
                 else

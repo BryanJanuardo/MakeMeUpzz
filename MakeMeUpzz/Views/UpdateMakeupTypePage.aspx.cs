@@ -1,5 +1,6 @@
 ﻿using MakeMeUpzz.Controllers;
 using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,12 @@ namespace MakeMeUpzz.Views
 {
     public partial class UpdateMakeupTypePage : System.Web.UI.Page
     {
-        DatabaseContextEntities db = new DatabaseContextEntities();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
             {
-                List<string> MakeupTypes = MakeupTypeController.getAllMakeupTypeName();
+                List<string> MakeupTypes = MakeupTypeController.getAllMakeupTypeName().value;
 
                 MakeupTypeDropDownList.DataSource = MakeupTypes;
                 MakeupTypeDropDownList.DataBind();
@@ -32,8 +32,8 @@ namespace MakeMeUpzz.Views
                 User user;
                 if (Session["user"] == null)
                 {
-                    var id = Int32.Parse(Request.Cookies["User_Cookie"].Value);
-                    user = (from x in db.Users where x.UserID == id select x).FirstOrDefault();
+                    var id = Convert.ToInt32(Request.Cookies["User_Cookie"].Value);
+                    user = UserController.getUserByUserId(id).value;
                     Session["user"] = user;
 
 
@@ -56,10 +56,14 @@ namespace MakeMeUpzz.Views
         protected void SubmitButton_Click(object sender, EventArgs e)
         {
             string makeupTypeName = MakeupTypeNameInput.Text;
-            ErrorValidationLabel.Text = MakeupTypeController.newMakeupTypeValidation(makeupTypeName);
 
-            if (ErrorValidationLabel.Text != "")    
+            Response<MakeupType> response = MakeupTypeController.newMakeupTypeValidation(makeupTypeName);
+
+            if (response.success == false)
+            {
+                ErrorValidationLabel.Text = response.message;
                 return;
+            }    
 
             MakeupTypeController.updateMakeupType(MakeupTypeDropDownList.SelectedIndex + 1, makeupTypeName);
 
@@ -75,6 +79,5 @@ namespace MakeMeUpzz.Views
         {
             Response.Redirect("ManageMakeupPage.aspx");
         }
-        //a
     }
 }

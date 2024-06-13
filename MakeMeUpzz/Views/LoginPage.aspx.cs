@@ -1,5 +1,6 @@
 ﻿using MakeMeUpzz.Controllers;
 using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,12 +24,15 @@ namespace MakeMeUpzz.Views
             string password = PasswordTxt.Text;
             bool remember = RememberMeBox.Checked;
 
-            FailLbl.Text = UserController.loginValidation(email, password);
+            Response<User> response = UserController.loginValidation(email, password);
 
-            if (FailLbl.Text != "")
+            if (response.success == false)
+            {
+                FailLbl.Text = response.message;
                 return;
+            }
 
-            var user = UserController.getUserByCredentials(email, password);
+            var user = UserController.getUserByCredentials(email, password).value;
                 
             if (user != null)
             {

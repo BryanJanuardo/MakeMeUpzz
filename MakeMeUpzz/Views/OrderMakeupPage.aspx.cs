@@ -1,5 +1,6 @@
 ﻿using MakeMeUpzz.Controllers;
 using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
@@ -14,7 +15,7 @@ namespace MakeMeUpzz.Views
     {
         protected void setDefaultValueMakeupQuantity()
         {
-            for (int i = 0; i < MakeupController.getAllMakeup().Count; i++)
+            for (int i = 0; i < MakeupController.getAllMakeup().value.Count; i++)
             {
                 var row = MakeupGridView.Rows[i].Cells[7].FindControl("MakeupQuantityInput") as TextBox;
                 row.Text = "0";
@@ -44,25 +45,37 @@ namespace MakeMeUpzz.Views
                 User user = Session["user"] as User;
                 int userId = user.UserID;
 
-                if (CartController.quantityValidation(makeupQuantity)){
-                    CartController.addMakeupToCart(userId, makeupId, makeupQuantity);
+                Response<Cart> response = CartController.quantityValidation(makeupQuantity);
+                if (response.success == false)
+                {
+                    ErrorLabel.Text = response.message;
                     return;
                 }
-                ErrorLabel.Text = "Quantity must be more than 0 to order!";
+
+                CartController.addMakeupToCart(userId, makeupId, makeupQuantity);
             }
         }
 
         protected void ClearCartButton_Click(object sender, EventArgs e)
         {
             User user = Session["user"] as User;
-            ErrorLabel.Text = CartController.resetCart(user.UserID);
+            Response<Cart> response = CartController.resetCart(user.UserID);
+            if (response.success == false)
+            {
+                ErrorLabel.Text = response.message;
+                return;
+            }
         }
 
         protected void CheckoutButton_Click(object sender, EventArgs e)
         {
             User user = Session["user"] as User;
-            ErrorLabel.Text = TransactionController.checkoutCart(user.UserID);
-
+            Response<Cart> response = TransactionController.checkoutCart(user.UserID);
+            if (response.success == false)
+            {
+                ErrorLabel.Text = response.message;
+                return;
+            }
         }
     }
 }

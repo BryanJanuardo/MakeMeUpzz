@@ -1,5 +1,6 @@
 ﻿using MakeMeUpzz.Factories;
 using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using MakeMeUpzz.Repositories;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace MakeMeUpzz.Handlers
 {
     public class TransactionHandler
     {
-        private static int generateNewTransactionId()
+        private static Response<int> generateNewTransactionId()
         {
             int newId = 1;
             int latestId = (from th in TransactionRepository.getAllTransactionHeaders() select th.TransactionID).ToList().LastOrDefault();
@@ -27,9 +28,9 @@ namespace MakeMeUpzz.Handlers
                 newId = latestId + 1;
             }
 
-            return newId;
+            return Response<int>.createResponse("Generate new id success!", true, newId);
         }
-        private static int generateNewTransactionDetailId()
+        private static Response<int> generateNewTransactionDetailId()
         {
             int newId = 1;
             int latestId = (from td in TransactionRepository.getAllTransactionDetail() select td.TransactionDetailID).ToList().LastOrDefault();
@@ -43,15 +44,15 @@ namespace MakeMeUpzz.Handlers
                 newId = latestId + 1;
             }
 
-            return newId;
+            return Response<int>.createResponse("Generate new id success!", true, newId);
         }
-        public static bool checkoutCart(int userId)
+        public static Response<Cart> checkoutCart(int userId)
         {
             List<Cart> carts = CartRepository.getAllCartsByUserId(userId);
             if (carts.Count() == 0)
-                return false;
+                return Response<Cart>.createResponse("Cart is empty!", false, null);
 
-            TransactionHeader transactionHeader = TransactionFactory.createTransactionHeader(generateNewTransactionId(), userId, DateTime.Now, "Unhandled");
+            TransactionHeader transactionHeader = TransactionFactory.createTransactionHeader(generateNewTransactionId().value, userId, DateTime.Now, "Unhandled");
             TransactionRepository.insertTransactionHeaders(transactionHeader);
 
             foreach (Cart cart in carts)
@@ -59,47 +60,48 @@ namespace MakeMeUpzz.Handlers
                 int transactionId = transactionHeader.TransactionID;
                 int makeupId = cart.MakeupID;
                 int quantity = cart.Quantity;
-                TransactionDetail td = TransactionFactory.createTransactionDetail(generateNewTransactionDetailId(), transactionId, makeupId, quantity);
+                TransactionDetail td = TransactionFactory.createTransactionDetail(generateNewTransactionDetailId().value, transactionId, makeupId, quantity);
                 TransactionRepository.insertTransactionDetails(td);
             }
+
             CartRepository.emptyCartByUserId(userId);
-            return true;
+            return Response<Cart>.createResponse("Checkout cart success!", true, null);
         }
 
-        public static TransactionHeader getAllTransactionByUserID(int userID)
+        public static Response<List<TransactionHeader>> getAllTransactionByUserID(int userID)
         {
-            return TransactionRepository.getAllTransactionByUserID(userID);
+            List<TransactionHeader> thList = TransactionRepository.getAllTransactionByUserID(userID);
+            return Response<List<TransactionHeader>>.createResponse("Get all transaction by user id success!", true, thList);
         }
 
-        public static List<TransactionHeader> getAllTransactionHeader()
+        public static Response<List<TransactionHeader>> getAllTransactionHeader()
         {
-            return TransactionRepository.getAllTransactionHeaders();
+            List<TransactionHeader> thList = TransactionRepository.getAllTransactionHeaders();
+            return Response<List<TransactionHeader>>.createResponse("Get all transaction success!", true, thList);
         }
 
-        public static List<TransactionHeader> getAllUnhandledTransaction()
+        public static Response<List<TransactionHeader>> getAllUnhandledTransaction()
         {
-            return TransactionRepository.getAllUnhandledTransaction();
+            List<TransactionHeader> thList = TransactionRepository.getAllUnhandledTransaction();
+            return Response<List<TransactionHeader>>.createResponse("Get all unhandled transaction success!", true, thList);
         }
        
-        public static TransactionHeader getTransactionHeaderByID(int id)
+        public static Response<TransactionHeader> getTransactionHeaderByID(int id)
         {
-            return TransactionRepository.GetTransactionHeaderByID(id);
+            TransactionHeader th = TransactionRepository.GetTransactionHeaderByID(id);
+            return Response<TransactionHeader>.createResponse("Get transaction by id success!", true, th);
         }
         
         public static Response<TransactionHeader> updateStatus(TransactionHeader transactionHeader)
         {
             TransactionRepository.updateStatus(transactionHeader);
-            return new Response<TransactionHeader>
-            {
-                Message = "Success",
-                IsSuccess = true,
-                payload = transactionHeader
-            };
+            return Response<TransactionHeader>.createResponse("Update status transaction success!", true, transactionHeader);
         }
 
-        public static List<object> showDetail(int transactionID)
+        public static Response<List<object>> showDetail(int transactionID)
         {
-            return TransactionRepository.showDetail(transactionID);
+            var transactionDetail = TransactionRepository.showDetail(transactionID);
+            return Response<List<object>>.createResponse("Show transaction detail success!", true, transactionDetail);
         }
     }
 }

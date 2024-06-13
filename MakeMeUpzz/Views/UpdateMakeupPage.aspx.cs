@@ -1,5 +1,6 @@
 ﻿using MakeMeUpzz.Controllers;
 using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace MakeMeUpzz.Views
             if (!IsPostBack)
             {
                 int id = Convert.ToInt32(Request.QueryString["ID"]);
-                Makeup makeup = MakeupController.getMakeupById(id);
+                Makeup makeup = MakeupController.getMakeupById(id).value;
 
                 if(makeup != null) 
                 {
@@ -25,8 +26,8 @@ namespace MakeMeUpzz.Views
                     MakeupWeightInput.Text = makeup.MakeupWeight.ToString();
                 }
 
-                List<string> MakeupTypes = MakeupTypeController.getAllMakeupTypeName();
-                List<string> MakeupBrands = MakeupBrandController.getMakeupBrandName();
+                List<string> MakeupTypes = MakeupTypeController.getAllMakeupTypeName().value;
+                List<string> MakeupBrands = MakeupBrandController.getMakeupBrandName().value;
 
                 MakeupTypeDropDownList.DataSource = MakeupTypes;
                 MakeupTypeDropDownList.DataBind();
@@ -42,17 +43,31 @@ namespace MakeMeUpzz.Views
             string makeupWeightText = MakeupWeightInput.Text;
             string makeupType = MakeupTypeDropDownList.Text.ToString();
             string makeupBrand = MakeupBrandDropDownList.Text.ToString();
-            ErrorValidationLabel.Text = MakeupController.validationNewMakeup(makeupName, makeupPriceText, makeupWeightText, makeupType, makeupBrand);
 
-            if (ErrorValidationLabel.Text != "")
+            int makeupPrice;
+            int makeupWeight;
+
+            try
+            {
+                makeupPrice = Convert.ToInt32(makeupPriceText);
+                makeupWeight = Convert.ToInt32(makeupWeightText);
+            }
+            catch (Exception ex)
+            {
+                ErrorValidationLabel.Text = "Input Price and Weight must be number";
                 return;
+            }
 
-            int makeupPrice = Convert.ToInt32(makeupPriceText);
-            int makeupWeight = Convert.ToInt32(makeupWeightText);
+            Response<Makeup> response = MakeupController.validationNewMakeup(makeupName, makeupPrice, makeupWeight, makeupType, makeupBrand);
+            if (response.success == false)
+            {
+                ErrorValidationLabel.Text = response.message;
+                return;
+            }
+
             int id = Convert.ToInt32(Request.QueryString["ID"]);
 
             MakeupController.editMakeup(id, makeupName, makeupPrice, makeupWeight, makeupType, makeupBrand);
-
             Response.Redirect("~/Views/ManageMakeupPage.aspx");
         }
 

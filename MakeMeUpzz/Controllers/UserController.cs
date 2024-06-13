@@ -1,5 +1,6 @@
 ﻿using MakeMeUpzz.Handlers;
 using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using MakeMeUpzz.Repositories;
 using System;
 using System.Collections.Generic;
@@ -12,102 +13,109 @@ namespace MakeMeUpzz.Controllers
     public class UserController
     {
 
-        public static string ValidationCheck(string email, string password, string confirmPassword, string username, string userDOB, string gender)
+        public static Response<User> ValidationCheck(string email, string password, string confirmPassword, string username, string userDOB, string gender)
         {
             if (string.IsNullOrEmpty(email) | string.IsNullOrEmpty(password) | string.IsNullOrEmpty(confirmPassword) | string.IsNullOrEmpty(username) | string.IsNullOrEmpty(userDOB))
             {
-                return "All fields must be filled";
+                return Response<User>.createResponse("All fields must be filled", false, null);
             }
 
             if (String.Compare(gender, "None") == 0)
             {
-                return "Gender must not be empty";
+                return Response<User>.createResponse("Gender must not be empty", false, null);
             }
 
-            string validateEmail = (from User in getAllUser() where User.UserEmail.ToUpper().Equals(email.ToUpper()) select User.UserEmail).FirstOrDefault();
+            string validateEmail = GetUserByEmail(email).value.UserEmail;
 
             if (validateEmail != null && validateEmail.ToUpper().Equals(email.ToUpper()))
             {
-                return "Email already exists";
+                return Response<User>.createResponse("Email already exists", false, null);
             }
 
             if (string.Compare(email.Substring(email.Length - 4, 4), ".com") != 0)
             {
-                return "Email must be valid";
+                return Response<User>.createResponse("Email must be valid", false, null);
             }
 
             if (password != confirmPassword)
             {
-                return "Password and Confirmation Password is different";
+                return Response<User>.createResponse("Password and Confirmation Password is different", false, null);
             }
 
             if (username.Length < 5 || username.Length > 15)
             {
-                return "Username must be in between 5 to 15 characters";
+                return Response<User>.createResponse("Username must be in between 5 to 15 characters", false, null);
             }
 
-            string validateUsername = (from x in getAllUser() where x.Username.Equals(username) select x.Username).FirstOrDefault();
+            string validateUsername = (from x in getAllUser().value where x.Username.Equals(username) select x.Username).FirstOrDefault();
 
             if (validateUsername != null && validateUsername.Equals(username))
             {
-                return "Username already exists";
+                return Response<User>.createResponse("Username already exists", false, null);
             }
 
-            return "";
+            return Response<User>.createResponse("Validation user success!", true, null);
 
         }
 
-        public static void insertNewUser(string email, string password, string username, string userDOB, string userGender)
+        public static Response<User> insertNewUser(string email, string password, string username, string userDOB, string userGender)
         {
-           UserHandler.insertNewUser(email, password, username, userDOB, userGender);
+            Response<User> response = UserHandler.insertNewUser(email, password, username, userDOB, userGender);
+            return response;
         }
 
-        public static List<User> getAllUser()
+        public static Response<List<User>> getAllUser()
         {
-            List<User> users = UserRepository.getAllUser();
-            return users;
+            Response<List<User>> response = UserHandler.getAllUser();
+            return response;
         }
 
-        public static User GetUserByEmail(string email)
+        public static Response<User> GetUserByEmail(string email)
         {
-            return (from User in UserRepository.getAllUser() where User.UserEmail.ToUpper().Equals(email.ToUpper()) select User).FirstOrDefault();
+            Response<User> response = UserHandler.GetUserByEmail(email);
+            return response;
         }
 
-        public static User getUserByCredentials(string email, string password)
+        public static Response<User> getUserByCredentials(string email, string password)
         {
-            return (from User in UserRepository.getAllUser() where User.UserEmail.ToUpper().Equals(email.ToUpper()) && User.UserPassword.Equals(password) select User).FirstOrDefault();
-
+            Response<User> response = UserHandler.getUserByCredentials(email, password);
+            return response;
         }
 
-        public static string loginValidation(string email, string password)
+        public static Response<User> getUserByUserId(int id)
+        {
+            Response<User> response = UserHandler.getUserByUserId(id);
+            return response;
+        }
+
+        public static Response<User> loginValidation(string email, string password)
         {
             if (string.IsNullOrEmpty(email))
             {
-                return "Email must be filled";
+                return Response<User>.createResponse("Email must be filled!", false, null);
             }
 
             if (string.IsNullOrEmpty(password))
             {
-                return "Password must be filled";
+                return Response<User>.createResponse("Password must be filled!", false, null);
             }
 
-            User validateUser = UserController.GetUserByEmail(email);
+            User validateUser = UserController.GetUserByEmail(email).value;
 
             if (validateUser == null)
             {
-                return "Incorrect email or password";
+                return Response<User>.createResponse("User not found!", false, null);
             }
             else if (!validateUser.UserEmail.ToUpper().Equals(email.ToUpper()))
             {
-                return "Incorrect email or password";
+                return Response<User>.createResponse("Email not found!", false, null);
             }
-
             if (!validateUser.UserPassword.Equals(password))
             {
-                return "Incorrect email or password";
+                return Response<User>.createResponse("Incorrect password", false, null);
             }
 
-            return "";
+            return Response<User>.createResponse("Login Success", true, null);
         }
     }
 }

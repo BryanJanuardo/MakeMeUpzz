@@ -23,5 +23,20 @@ namespace MakeMeUpzz.Layouts
         {
             Response.Redirect("~/Views/OrderMakeupPage.aspx");
         }
+
+        protected void OrderQueueButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/TransactionDetailPage.aspx");
+        }
+
+        protected void UserLogoutButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/LoginPage.aspx");
+        }
+
+        protected void AdminLogoutButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/LoginPage.aspx");
+        }
     }
 }

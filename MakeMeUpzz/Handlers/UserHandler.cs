@@ -1,5 +1,6 @@
 ﻿using MakeMeUpzz.Factories;
 using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using MakeMeUpzz.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,34 +11,51 @@ namespace MakeMeUpzz.Handlers
 {
     public class UserHandler
     {
-        public static int GenerateUserId()
+        public static Response<int> GenerateUserId()
         {
             int newUserId;
-            string lastUsername = (from x in getAllUser() select x.Username).ToList().LastOrDefault();
+            string lastUsername = (from x in UserRepository.getAllUser() select x.Username).ToList().LastOrDefault();
             if (lastUsername == null)
             {
                 newUserId = 1;
-                return newUserId;
             }
             else
             {
-                int lastId = (from User in getAllUser() select User.UserID).LastOrDefault();
+                int lastId = (from User in UserRepository.getAllUser() select User.UserID).LastOrDefault();
                 newUserId = lastId + 1;
-                return newUserId;
             }
-
+            return Response<int>.createResponse("Generate new id success", true, newUserId);
         }
 
-        public static void insertNewUser(string email, string password, string username, string userDOB, string userGender)
+        public static Response<User> insertNewUser(string email, string password, string username, string userDOB, string userGender)
         {
-            User newUser = UserFactory.createUser(GenerateUserId(), email, password, username, userDOB, userGender);
+            User newUser = UserFactory.createUser(GenerateUserId().value, email, password, username, userDOB, userGender);
             UserRepository.insertNewUser(newUser);
+
+            return Response<User>.createResponse("Insert new user success", true, null);
         }
 
-        public static List<User> getAllUser()
+        public static Response<List<User>> getAllUser()
         {
             List<User> users = UserRepository.getAllUser();
-            return users;
+            return Response<List<User>>.createResponse("Get all user success!", true, users);
+        }
+
+        public static Response<User> GetUserByEmail(string email)
+        {
+            User user = (from User in UserRepository.getAllUser() where User.UserEmail.ToUpper().Equals(email.ToUpper()) select User).FirstOrDefault();
+            return Response<User>.createResponse("Get user by email success!", true, user);
+        }
+        public static Response<User> getUserByCredentials(string email, string password)
+        {
+            User user = (from User in UserRepository.getAllUser() where User.UserEmail.ToUpper().Equals(email.ToUpper()) && User.UserPassword.Equals(password) select User).FirstOrDefault();
+            return Response<User>.createResponse("Get user by credentials success!", true , user);
+        }
+
+        public static Response<User> getUserByUserId(int id)
+        {
+            User user = (from x in UserRepository.getAllUser() where x.UserID == id select x).FirstOrDefault();
+            return Response<User>.createResponse("Get user by user id success!", true, user);
         }
     }
 }

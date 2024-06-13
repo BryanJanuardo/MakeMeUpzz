@@ -1,5 +1,7 @@
 ﻿using MakeMeUpzz.Controllers;
 using MakeMeUpzz.Handlers;
+using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +17,9 @@ namespace MakeMeUpzz.Views
         {
             if(IsPostBack == false)
             {
-                List<string> MakeupTypes = MakeupTypeController.getAllMakeupTypeName();
-                List<string> MakeupBrands = MakeupBrandController.getMakeupBrandName();
+                ErrorValidationLabel.Text = "";
+                List<string> MakeupTypes = MakeupTypeController.getAllMakeupTypeName().value;
+                List<string> MakeupBrands = MakeupBrandController.getMakeupBrandName().value;
 
                 MakeupTypeDropDownList.DataSource = MakeupTypes;
                 MakeupTypeDropDownList.DataBind();
@@ -32,13 +35,26 @@ namespace MakeMeUpzz.Views
             string makeupWeightText = MakeupWeightInput.Text;
             string makeupType = MakeupTypeDropDownList.Text.ToString();
             string makeupBrand = MakeupBrandDropDownList.Text.ToString();
-            ErrorValidationLabel.Text = MakeupController.validationNewMakeup(makeupName, makeupPriceText, makeupWeightText, makeupType, makeupBrand);
-            
-            if (ErrorValidationLabel.Text != "")
-                return;
+            int makeupPrice;
+            int makeupWeight;
 
-            int makeupPrice = Convert.ToInt32(makeupPriceText);
-            int makeupWeight = Convert.ToInt32(makeupWeightText);
+            try
+            {
+                makeupPrice = Convert.ToInt32(makeupPriceText);
+                makeupWeight = Convert.ToInt32(makeupWeightText);
+            }
+            catch (Exception ex)
+            {
+                ErrorValidationLabel.Text = "Input Price and Weight must be number";
+                return;
+            }
+
+            Response<Makeup> response = MakeupController.validationNewMakeup(makeupName, makeupPrice, makeupWeight, makeupType, makeupBrand);
+            if (response.success == false)
+            {
+                ErrorValidationLabel.Text = response.message;
+                return;
+            }
 
             MakeupController.insertNewMakeup(makeupName, makeupPrice, makeupWeight, makeupType, makeupBrand);
             Response.Redirect("~/Views/ManageMakeupPage.aspx");
