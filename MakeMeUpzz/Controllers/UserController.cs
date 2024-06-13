@@ -84,7 +84,7 @@ namespace MakeMeUpzz.Controllers
             if (string.IsNullOrEmpty(email))
             {
                 return "Email must be filled";
-        }
+            }
 
             if (string.IsNullOrEmpty(password))
             {

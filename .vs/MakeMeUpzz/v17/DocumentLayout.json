@@ -3,27 +3,23 @@
   "WorkspaceRootPath": "G:\\MakeMeUpzz\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|G:\\MakeMeUpzz\\makemeupzz\\views\\loginpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|solutionrelative:makemeupzz\\views\\loginpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|g:\\makemeupzz\\makemeupzz\\views\\registerpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|solutionrelative:makemeupzz\\views\\registerpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|g:\\makemeupzz\\makemeupzz\\views\\loginpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|solutionrelative:makemeupzz\\views\\loginpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|g:\\makemeupzz\\makemeupzz\\views\\insertmakeuppage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|solutionrelative:makemeupzz\\views\\insertmakeuppage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|g:\\makemeupzz\\makemeupzz\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|G:\\MakeMeUpzz\\makemeupzz\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|solutionrelative:makemeupzz\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|g:\\makemeupzz\\makemeupzz\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|solutionrelative:makemeupzz\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|G:\\MakeMeUpzz\\makemeupzz\\views\\insertmakeuppage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|solutionrelative:makemeupzz\\views\\insertmakeuppage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|g:\\makemeupzz\\makemeupzz\\controllers\\makeupbrandcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|G:\\MakeMeUpzz\\makemeupzz\\controllers\\makeupbrandcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|solutionrelative:makemeupzz\\controllers\\makeupbrandcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -34,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,33 +38,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "RegisterPage.aspx.cs",
               "DocumentMoniker": "G:\\MakeMeUpzz\\MakeMeUpzz\\Views\\RegisterPage.aspx.cs",
               "RelativeDocumentMoniker": "MakeMeUpzz\\Views\\RegisterPage.aspx.cs",
               "ToolTip": "G:\\MakeMeUpzz\\MakeMeUpzz\\Views\\RegisterPage.aspx.cs",
               "RelativeToolTip": "MakeMeUpzz\\Views\\RegisterPage.aspx.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAgwCUAAAA0AAAA",
+              "ViewState": "AQIAABMAAAAAAAAAAAA1wCUAAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-13T12:39:05.255Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "UserController.cs",
               "DocumentMoniker": "G:\\MakeMeUpzz\\MakeMeUpzz\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "MakeMeUpzz\\Controllers\\UserController.cs",
               "ToolTip": "G:\\MakeMeUpzz\\MakeMeUpzz\\Controllers\\UserController.cs",
               "RelativeToolTip": "MakeMeUpzz\\Controllers\\UserController.cs",
-              "ViewState": "AQIAACgAAAAAAAAAAAAgwE0AAAAiAAAA",
+              "ViewState": "AQIAAFEAAAAAAAAAAAA4wG4AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-13T12:06:20.182Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "MakeupBrandController.cs",
               "DocumentMoniker": "G:\\MakeMeUpzz\\MakeMeUpzz\\Controllers\\MakeupBrandController.cs",
               "RelativeDocumentMoniker": "MakeMeUpzz\\Controllers\\MakeupBrandController.cs",
@@ -76,25 +72,11 @@
               "RelativeToolTip": "MakeMeUpzz\\Controllers\\MakeupBrandController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T11:54:59.034Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-13T11:54:59.034Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "G:\\MakeMeUpzz\\MakeMeUpzz\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "MakeMeUpzz\\Controllers\\LoginController.cs",
-              "ToolTip": "G:\\MakeMeUpzz\\MakeMeUpzz\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "MakeMeUpzz\\Controllers\\LoginController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAsAAABKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T11:54:48.585Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "InsertMakeupPage.aspx.cs",
               "DocumentMoniker": "G:\\MakeMeUpzz\\MakeMeUpzz\\Views\\InsertMakeupPage.aspx.cs",
               "RelativeDocumentMoniker": "MakeMeUpzz\\Views\\InsertMakeupPage.aspx.cs",
@@ -107,13 +89,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "LoginPage.aspx.cs",
               "DocumentMoniker": "G:\\MakeMeUpzz\\MakeMeUpzz\\Views\\LoginPage.aspx.cs",
               "RelativeDocumentMoniker": "MakeMeUpzz\\Views\\LoginPage.aspx.cs",
               "ToolTip": "G:\\MakeMeUpzz\\MakeMeUpzz\\Views\\LoginPage.aspx.cs",
               "RelativeToolTip": "MakeMeUpzz\\Views\\LoginPage.aspx.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAQwBEAAAAJAAAA",
+              "ViewState": "AQIAABgAAAAAAAAAAAAowBYAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-13T11:51:47.259Z",
               "EditorCaption": ""
