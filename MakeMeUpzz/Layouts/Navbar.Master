@@ -13,14 +13,14 @@
                 {%>
                 <asp:Button ID="OrderMakeupButton" runat="server" Text="Order Makeup" OnClick="OrderMakeupButton_Click" />
                 <asp:Button ID="HistoryButton" runat="server" Text="History" />
-                <asp:Button ID="UserProfileButton" runat="server" Text="Profile" />
+            <asp:Button ID="UserProfileButton" runat="server" Text="Profile" OnClick="UserProfileButton_Click1" />
                 <asp:Button ID="UserLogoutButton" runat="server" Text="Logout" />
             <%}else if ((Session["user"] as MakeMeUpzz.Models.User).UserRole == "Admin")
                 {%>
                 <asp:Button ID="HomeButton" runat="server" Text="Home" />
                 <asp:Button ID="ManageMakeupButton" runat="server" Text="ManageMakeup" OnClick="ManageMakeupButton_Click" />
                 <asp:Button ID="OrderQueueButton" runat="server" Text="OrderQueue" />
-                <asp:Button ID="AdminProfileButton" runat="server" Text="Profile" />
+            <asp:Button ID="AdminProfileButton" runat="server" Text="Profile" OnClick="AdminProfileButton_Click" />
                 <asp:Button ID="TransactionReportButton" runat="server" Text="TransactionReport" />
                 <asp:Button ID="AdminLogoutButton" runat="server" Text="Logout" />
             <%}%>

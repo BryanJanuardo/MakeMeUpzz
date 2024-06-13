@@ -20,5 +20,29 @@ namespace MakeMeUpzz.Repositories
             string makeupBrandId = (from brand in db.MakeupBrands where brand.MakeupBrandName == name select brand.MakeupBrandID).FirstOrDefault().ToString();
             return Convert.ToInt32(makeupBrandId);
         }
+
+        public static void insertNewMakeupBrand(MakeupBrand newMakeupBrand)
+        {
+            DatabaseContextEntities db = Singleton.getDB();
+            db.MakeupBrands.Add(newMakeupBrand);
+            db.SaveChanges();
+        }
+
+        public static void editMakeupBrand(MakeupBrand newMakeupBrand)
+        {
+            DatabaseContextEntities db = Singleton.getDB();
+            MakeupBrand makeupBrand = db.MakeupBrands.Find(newMakeupBrand.MakeupBrandID);
+            makeupBrand.MakeupBrandName = newMakeupBrand.MakeupBrandName;
+            makeupBrand.MakeupBrandRating = newMakeupBrand.MakeupBrandRating;
+            db.SaveChanges();
+        }
+
+        public static void deleteMakeupBrand(int id)
+        {
+            DatabaseContextEntities db = Singleton.getDB();
+            MakeupBrand makeupBrand = db.MakeupBrands.Find(id);
+            db.MakeupBrands.Remove(makeupBrand);
+            db.SaveChanges();
+        }
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.EnterpriseServices.Internal;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace MakeMeUpzz.Controllers
 {
@@ -108,6 +109,66 @@ namespace MakeMeUpzz.Controllers
             }
 
             return "";
+        }
+
+        public static string GetCurrentUserRole(User user)
+        {
+            return user.UserRole;
+        }
+
+        public static void LoadCustomerData(GridView customerData)
+        {
+            var customerDataList = getAllUser();
+            customerData.DataSource = customerDataList;
+            customerData.DataBind();
+        }
+
+        public static string updateProfileValidation(string username, string email, string gender, string dob)
+        {
+            if (username.Length < 5 || username.Length > 15)
+            {
+                return "Username must be in between 5 to 15 characters";
+            }
+
+            if (string.Compare(email.Substring(email.Length - 4, 4), ".com") != 0)
+            {
+                return "Email must be valid and end with '.com'";
+            }
+
+            if (String.Compare(gender, "None") == 0)
+            {
+                return "Gender must not be empty";
+            }
+
+            if (string.IsNullOrEmpty(dob))
+            {
+                return "Date of Birth cannot be empty";
+            }
+
+            return "";
+        }
+
+        public static string updatePasswordValidation(string currentPassword, string newPassword)
+        {
+            if (string.IsNullOrEmpty(currentPassword))
+            {
+                return "Password cannot be empty";
+            }
+            if (string.IsNullOrEmpty(newPassword))
+            {
+                return "New password cannot be empty";
+            }
+            return "";
+        }
+
+        public static string updateUserProfile(int userID, string username, string email, string gender, DateTime dob)
+        {
+            return UserHandler.updateUserProfile(userID, username, email, gender, dob);
+        }
+
+        public static void updateUserPassword(int userID, string oldPassword, string newPassword)
+        {
+            UserHandler.updateUserPassword(userID, oldPassword, newPassword);
         }
     }
 }
