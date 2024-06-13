@@ -124,3 +124,7 @@ G:\MakeMeUpzz\MakeMeUpzz\obj\Debug\MakeMeUpzz.csproj.CoreCompileInputs.cache
 G:\MakeMeUpzz\MakeMeUpzz\obj\Debug\MakeMeUpzz.csproj.Up2Date
 G:\MakeMeUpzz\MakeMeUpzz\obj\Debug\MakeMeUpzz.dll
 G:\MakeMeUpzz\MakeMeUpzz\obj\Debug\MakeMeUpzz.pdb
+D:\PSD Lab\MakeMeUpzz\obj\Debug\MakeMeUpzz.csproj.AssemblyReference.cache
+D:\PSD Lab\MakeMeUpzz\obj\Debug\MakeMeUpzz.csproj.CoreCompileInputs.cache
+D:\PSD Lab\MakeMeUpzz\obj\Debug\MakeMeUpzz.dll
+D:\PSD Lab\MakeMeUpzz\obj\Debug\MakeMeUpzz.pdb

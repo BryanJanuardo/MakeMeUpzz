@@ -17,5 +17,36 @@ namespace MakeMeUpzz.Controllers
 
             return "Cart Has been Checkout!";
         }
+
+        public static List<TransactionHeader> getAllTransactionHeaders()
+        {
+            return TransactionHandler.getAllTransactionHeader();
+        }
+
+        public static List<TransactionHeader> getAllTransactionByUserID(int userId)
+        {
+            return TransactionHandler.getAllTransactionByUserID(userId);
+        }
+
+        public static List<TransactionHeader> getAllUnhandledTransaction()
+        {
+            return TransactionHandler.getAllUnhandledTransaction();
+        }
+
+        public static TransactionHeader getTransactionHeaderByID(int id)
+        {
+            return TransactionHandler.getTransactionHeaderByID(id);
+        }
+
+        public static Response<TransactionHeader> updateStatus(TransactionHeader transactionHeader)
+        {
+            Response<TransactionHeader> response = TransactionHandler.updateStatus(transactionHeader);
+            return response;
+        }
+
+        public static List<object> showDetail(int transactionID)
+        {
+            return TransactionHandler.showDetail(transactionID);
+        }
     }
 }

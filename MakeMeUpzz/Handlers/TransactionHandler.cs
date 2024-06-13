@@ -3,8 +3,11 @@ using MakeMeUpzz.Models;
 using MakeMeUpzz.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Web;
+using System.Web.Caching;
+using System.Web.Services.Description;
 
 namespace MakeMeUpzz.Handlers
 {
@@ -61,6 +64,42 @@ namespace MakeMeUpzz.Handlers
             }
             CartRepository.emptyCartByUserId(userId);
             return true;
+        }
+
+        public static TransactionHeader getAllTransactionByUserID(int userID)
+        {
+            return TransactionRepository.getAllTransactionByUserID(userID);
+        }
+
+        public static List<TransactionHeader> getAllTransactionHeader()
+        {
+            return TransactionRepository.getAllTransactionHeaders();
+        }
+
+        public static List<TransactionHeader> getAllUnhandledTransaction()
+        {
+            return TransactionRepository.getAllUnhandledTransaction();
+        }
+       
+        public static TransactionHeader getTransactionHeaderByID(int id)
+        {
+            return TransactionRepository.GetTransactionHeaderByID(id);
+        }
+        
+        public static Response<TransactionHeader> updateStatus(TransactionHeader transactionHeader)
+        {
+            TransactionRepository.updateStatus(transactionHeader);
+            return new Response<TransactionHeader>
+            {
+                Message = "Success",
+                IsSuccess = true,
+                payload = transactionHeader
+            };
+        }
+
+        public static List<object> showDetail(int transactionID)
+        {
+            return TransactionRepository.showDetail(transactionID);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MakeMeUpzz.Controllers;
+using MakeMeUpzz.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,12 @@ namespace MakeMeUpzz.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                String transactionID = Request.QueryString["ID"];
+                TransactionDetailGV.DataSource = TransactionController.showDetail(int.Parse(transactionID));
+                TransactionDetailGV.DataBind();
+            }
         }
     }
 }
