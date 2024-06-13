@@ -2,8 +2,12 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/MakeMeUpzz/App_Data/DatabaseContext.mdf
-/MakeMeUpzz/App_Data/DatabaseContext_log.ldf
+/.vs/MakeMeUpzz/FileContentIndex/026ede1c-162c-4e4b-9690-aabcca1f4c36.vsidx
+/.vs/MakeMeUpzz/FileContentIndex/29c5a579-59ea-49aa-925d-a964b38af049.vsidx
 /.vs/MakeMeUpzz/FileContentIndex/6c9a29bf-7fc7-42c6-82b9-5dcb7a7e5ed4.vsidx
-/.vs/MakeMeUpzz/FileContentIndex/bfd09932-02eb-4536-b9c2-a13c3fdc07d0.vsidx
-/.vs/MakeMeUpzz/FileContentIndex/c80d159a-e218-49f9-8324-9c2bd69ca86b.vsidx
+/.vs/MakeMeUpzz/FileContentIndex/7ad9cd83-014a-4976-8dbe-a234288610df.vsidx
+/.vs/MakeMeUpzz/FileContentIndex/86b6e9c3-13f4-486b-9fbc-3eb15b7f068d.vsidx
+/.vs/MakeMeUpzz/FileContentIndex/e41676fe-5a3f-41ff-b051-c279847fdbe8.vsidx
+/.vs/MakeMeUpzz/FileContentIndex/f79daafb-9ca0-4faf-9f12-3db631e1561a.vsidx
+/.vs/MakeMeUpzz/FileContentIndex/fba66bfd-80b8-44cc-abf1-7ca36d4d40e6.vsidx
+/MakeMeUpzz/App_Data

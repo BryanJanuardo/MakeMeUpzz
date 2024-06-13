@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\PSD(REVISIONNWWDP)\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|d:\\psd(revisionnwwdp)\\makemeupzz\\views\\insertmakeupbrandpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|solutionrelative:makemeupzz\\views\\insertmakeupbrandpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|d:\\psd(revisionnwwdp)\\makemeupzz\\views\\registerpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|solutionrelative:makemeupzz\\views\\registerpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/D__PSD_REVISIONNWWDP__MAKEMEUPZZ_APP_DATA_DATABASECONTEXT.MDF/True/SqlTable/dbo.MakeupBrands.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
@@ -15,10 +23,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/D__PSD_REVISIONNWWDP__MAKEMEUPZZ_APP_DATA_DATABASECONTEXT.MDF/True/SqlTable/dbo.Users.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|d:\\psd(revisionnwwdp)\\makemeupzz\\views\\insertmakeupbrandpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|solutionrelative:makemeupzz\\views\\insertmakeupbrandpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|d:\\psd(revisionnwwdp)\\makemeupzz\\repositories\\makeupbrandrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -41,10 +45,6 @@
       "RelativeMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|solutionrelative:makemeupzz\\controllers\\makeupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|d:\\psd(revisionnwwdp)\\makemeupzz\\views\\registerpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|solutionrelative:makemeupzz\\views\\registerpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|d:\\psd(revisionnwwdp)\\makemeupzz\\views\\registerpage.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{012F0FD3-00D2-41F6-AB7C-8E23EB58FADC}|MakeMeUpzz\\MakeMeUpzz.csproj|solutionrelative:makemeupzz\\views\\registerpage.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
@@ -64,7 +64,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 16,
           "Children": [
             {
               "$type": "Bookmark",
@@ -92,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "dbo.Users [Data]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/D__PSD_REVISIONNWWDP__MAKEMEUPZZ_APP_DATA_DATABASECONTEXT.MDF/True/SqlTable/dbo.Users.sql",
               "ToolTip": "dbo.Users [Data]",
@@ -102,7 +102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "dbo.MakeupBrands [Data]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/D__PSD_REVISIONNWWDP__MAKEMEUPZZ_APP_DATA_DATABASECONTEXT.MDF/True/SqlTable/dbo.MakeupBrands.sql",
               "ToolTip": "dbo.MakeupBrands [Data]",
@@ -112,7 +112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "InsertMakeupPage.aspx",
               "DocumentMoniker": "D:\\PSD(REVISIONNWWDP)\\MakeMeUpzz\\Views\\InsertMakeupPage.aspx",
               "RelativeDocumentMoniker": "MakeMeUpzz\\Views\\InsertMakeupPage.aspx",
@@ -125,7 +125,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "MakeupBrandRepository.cs",
               "DocumentMoniker": "D:\\PSD(REVISIONNWWDP)\\MakeMeUpzz\\Repositories\\MakeupBrandRepository.cs",
               "RelativeDocumentMoniker": "MakeMeUpzz\\Repositories\\MakeupBrandRepository.cs",
@@ -138,7 +138,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "MakeupBrandHandler.cs",
               "DocumentMoniker": "D:\\PSD(REVISIONNWWDP)\\MakeMeUpzz\\Handlers\\MakeupBrandHandler.cs",
               "RelativeDocumentMoniker": "MakeMeUpzz\\Handlers\\MakeupBrandHandler.cs",
@@ -151,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "MakeupHandler.cs",
               "DocumentMoniker": "D:\\PSD(REVISIONNWWDP)\\MakeMeUpzz\\Handlers\\MakeupHandler.cs",
               "RelativeDocumentMoniker": "MakeMeUpzz\\Handlers\\MakeupHandler.cs",
@@ -164,7 +164,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "MakeupController.cs",
               "DocumentMoniker": "D:\\PSD(REVISIONNWWDP)\\MakeMeUpzz\\Controllers\\MakeupController.cs",
               "RelativeDocumentMoniker": "MakeMeUpzz\\Controllers\\MakeupController.cs",
@@ -177,7 +177,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "MakeupBrandController.cs",
               "DocumentMoniker": "D:\\PSD(REVISIONNWWDP)\\MakeMeUpzz\\Controllers\\MakeupBrandController.cs",
               "RelativeDocumentMoniker": "MakeMeUpzz\\Controllers\\MakeupBrandController.cs",
@@ -190,13 +190,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 1,
               "Title": "RegisterPage.aspx.cs",
               "DocumentMoniker": "D:\\PSD(REVISIONNWWDP)\\MakeMeUpzz\\Views\\RegisterPage.aspx.cs",
               "RelativeDocumentMoniker": "MakeMeUpzz\\Views\\RegisterPage.aspx.cs",
               "ToolTip": "D:\\PSD(REVISIONNWWDP)\\MakeMeUpzz\\Views\\RegisterPage.aspx.cs",
               "RelativeToolTip": "MakeMeUpzz\\Views\\RegisterPage.aspx.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAQwC8AAAAoAAAA",
+              "ViewState": "AQIAACEAAAAAAAAAAAAowDAAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-13T16:00:58.47Z",
               "EditorCaption": ""
@@ -216,20 +216,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "InsertMakeupBrandPage.aspx.cs",
               "DocumentMoniker": "D:\\PSD(REVISIONNWWDP)\\MakeMeUpzz\\Views\\InsertMakeupBrandPage.aspx.cs",
               "RelativeDocumentMoniker": "MakeMeUpzz\\Views\\InsertMakeupBrandPage.aspx.cs",
               "ToolTip": "D:\\PSD(REVISIONNWWDP)\\MakeMeUpzz\\Views\\InsertMakeupBrandPage.aspx.cs",
               "RelativeToolTip": "MakeMeUpzz\\Views\\InsertMakeupBrandPage.aspx.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAACMAAAAJAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAowB0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-13T15:48:59.186Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "InsertMakeupBrandPage.aspx",
               "DocumentMoniker": "D:\\PSD(REVISIONNWWDP)\\MakeMeUpzz\\Views\\InsertMakeupBrandPage.aspx",
               "RelativeDocumentMoniker": "MakeMeUpzz\\Views\\InsertMakeupBrandPage.aspx",
