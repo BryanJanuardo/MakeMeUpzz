@@ -31,6 +31,16 @@ namespace MakeMeUpzz.Views
                 {
                     user = (User) Session["user"];
                 }
+
+
+                string role = UserController.GetCurrentUserRole(user);
+                roleLbl.Text = $"Your role is {role}";
+
+                if (role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+                {
+                    customerData.Visible = true;
+                    UserController.LoadCustomerData(customerData);
+                }
             }
         }
     }

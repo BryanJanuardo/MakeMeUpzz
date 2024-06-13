@@ -57,5 +57,15 @@ namespace MakeMeUpzz.Handlers
             User user = (from x in UserRepository.getAllUser() where x.UserID == id select x).FirstOrDefault();
             return Response<User>.createResponse("Get user by user id success!", true, user);
         }
+
+        public static string updateUserProfile(int userID, string username, string email, string gender, DateTime dob)
+        {
+            return UserRepository.updateUserProfile(userID, username, email, gender, dob);
+        }
+
+        public static void updateUserPassword(int userID, string oldPassword, string newPassword)
+        {
+            UserRepository.updateUserPassword(userID, oldPassword, newPassword);    
+        }
     }
 }

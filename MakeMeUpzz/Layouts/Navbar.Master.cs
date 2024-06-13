@@ -38,5 +38,20 @@ namespace MakeMeUpzz.Layouts
         {
             Response.Redirect("~/Views/LoginPage.aspx");
         }
+
+        protected void UserProfileButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void AdminProfileButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/ProfilePage.aspx");
+        }
+
+        protected void UserProfileButton_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/ProfilePage.aspx");
+        }
     }
 }
