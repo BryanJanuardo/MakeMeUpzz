@@ -11,9 +11,10 @@ namespace MakeMeUpzz.Views
 {
     public partial class LoginPage : System.Web.UI.Page
     {
-        DatabaseContextEntities db = new DatabaseContextEntities();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
+<<<<<<< Updated upstream
             FailLbl.Visible = false;
         }
 
@@ -59,6 +60,8 @@ namespace MakeMeUpzz.Views
             FailLbl.Visible = false;
 
             return true;
+=======
+>>>>>>> Stashed changes
         }
 
         protected void LoginBtn_Click(object sender, EventArgs e)
@@ -67,32 +70,31 @@ namespace MakeMeUpzz.Views
             string password = PasswordTxt.Text;
             bool remember = RememberMeBox.Checked;
 
-            FailLbl.Text = "";
-            FailLbl.Visible = false;
+            FailLbl.Text = LoginController.loginValidation(email, password);
 
-            var user = (from User in db.Users where User.UserEmail.ToUpper().Equals(email.ToUpper()) && User.UserPassword.Equals(password) select User).FirstOrDefault();
+            if (FailLbl.Text != "")
+                return;
 
-            if (InputValidate(email, password, user))
+            var user = UserController.getUserByCredentials(email, password);
+                
+            if (user != null)
             {
-                if (user != null)
-                {
-                    Session["user"] = user;
+                Session["user"] = user;
 
-                    if (remember)
-                    {
-                        HttpCookie cookie = new HttpCookie("User_Cookie");
-                        cookie.Value = user.UserID.ToString();
-                        cookie.Expires = DateTime.Now.AddMinutes(2);
-                        Response.Cookies.Add(cookie);
-                    }
-
-                    Response.Redirect("HomePage.aspx");
-                }
-                else
+                if (remember)
                 {
-                    FailLbl.Text = "User not found";
-                    FailLbl.Visible = true;
+                    HttpCookie cookie = new HttpCookie("User_Cookie");
+                    cookie.Value = user.UserID.ToString();
+                    cookie.Expires = DateTime.Now.AddMinutes(2);
+                    Response.Cookies.Add(cookie);
                 }
+
+                Response.Redirect("HomePage.aspx");
+            }
+            else
+            {
+                FailLbl.Text = "User not found";
+                return;
             }
         }
     }

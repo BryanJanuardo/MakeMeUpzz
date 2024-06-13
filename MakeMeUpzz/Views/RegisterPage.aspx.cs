@@ -12,7 +12,6 @@ namespace MakeMeUpzz.Views
 {
     public partial class RegisterPage : System.Web.UI.Page
     {
-        DatabaseContextEntities db = new DatabaseContextEntities();
         protected void Page_Load(object sender, EventArgs e)
         {
 
