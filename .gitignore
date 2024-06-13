@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/MakeMeUpzz/App_Data/DatabaseContext.mdf
+/MakeMeUpzz/App_Data/DatabaseContext_log.ldf
