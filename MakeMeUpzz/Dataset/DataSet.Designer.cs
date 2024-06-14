@@ -329,6 +329,8 @@ namespace MakeMeUpzz.Dataset {
             
             private global::System.Data.DataColumn columnStatus;
             
+            private global::System.Data.DataColumn columngrandTotal;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public TransactionHeadersDataTable() {
@@ -396,6 +398,14 @@ namespace MakeMeUpzz.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn grandTotalColumn {
+                get {
+                    return this.columngrandTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -431,13 +441,14 @@ namespace MakeMeUpzz.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TransactionHeadersRow AddTransactionHeadersRow(string TransactionID, string UserID, string TransactionDate, string Status) {
+            public TransactionHeadersRow AddTransactionHeadersRow(string TransactionID, string UserID, string TransactionDate, string Status, string grandTotal) {
                 TransactionHeadersRow rowTransactionHeadersRow = ((TransactionHeadersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TransactionID,
                         UserID,
                         TransactionDate,
-                        Status};
+                        Status,
+                        grandTotal};
                 rowTransactionHeadersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTransactionHeadersRow);
                 return rowTransactionHeadersRow;
@@ -464,6 +475,7 @@ namespace MakeMeUpzz.Dataset {
                 this.columnUserID = base.Columns["UserID"];
                 this.columnTransactionDate = base.Columns["TransactionDate"];
                 this.columnStatus = base.Columns["Status"];
+                this.columngrandTotal = base.Columns["grandTotal"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -477,6 +489,8 @@ namespace MakeMeUpzz.Dataset {
                 base.Columns.Add(this.columnTransactionDate);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStatus);
+                this.columngrandTotal = new global::System.Data.DataColumn("grandTotal", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columngrandTotal);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -618,6 +632,8 @@ namespace MakeMeUpzz.Dataset {
             
             private global::System.Data.DataColumn columnQuantity;
             
+            private global::System.Data.DataColumn columnsubTotal;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public TransactionDetailsDataTable() {
@@ -685,6 +701,14 @@ namespace MakeMeUpzz.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn subTotalColumn {
+                get {
+                    return this.columnsubTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -720,13 +744,14 @@ namespace MakeMeUpzz.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TransactionDetailsRow AddTransactionDetailsRow(string TransactionDetailID, TransactionHeadersRow parentTransactionHeadersRowByTransactionHeaders_TransactionDetails, string MakeupID, string Quantity) {
+            public TransactionDetailsRow AddTransactionDetailsRow(string TransactionDetailID, TransactionHeadersRow parentTransactionHeadersRowByTransactionHeaders_TransactionDetails, string MakeupID, string Quantity, string subTotal) {
                 TransactionDetailsRow rowTransactionDetailsRow = ((TransactionDetailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TransactionDetailID,
                         null,
                         MakeupID,
-                        Quantity};
+                        Quantity,
+                        subTotal};
                 if ((parentTransactionHeadersRowByTransactionHeaders_TransactionDetails != null)) {
                     columnValuesArray[1] = parentTransactionHeadersRowByTransactionHeaders_TransactionDetails[0];
                 }
@@ -756,6 +781,7 @@ namespace MakeMeUpzz.Dataset {
                 this.columnTransactionID = base.Columns["TransactionID"];
                 this.columnMakeupID = base.Columns["MakeupID"];
                 this.columnQuantity = base.Columns["Quantity"];
+                this.columnsubTotal = base.Columns["subTotal"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -769,6 +795,8 @@ namespace MakeMeUpzz.Dataset {
                 base.Columns.Add(this.columnMakeupID);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
+                this.columnsubTotal = new global::System.Data.DataColumn("subTotal", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsubTotal);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -975,6 +1003,22 @@ namespace MakeMeUpzz.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string grandTotal {
+                get {
+                    try {
+                        return ((string)(this[this.tableTransactionHeaders.grandTotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'grandTotal\' in table \'TransactionHeaders\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTransactionHeaders.grandTotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsTransactionIDNull() {
                 return this.IsNull(this.tableTransactionHeaders.TransactionIDColumn);
             }
@@ -1019,6 +1063,18 @@ namespace MakeMeUpzz.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetStatusNull() {
                 this[this.tableTransactionHeaders.StatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsgrandTotalNull() {
+                return this.IsNull(this.tableTransactionHeaders.grandTotalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetgrandTotalNull() {
+                this[this.tableTransactionHeaders.grandTotalColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1114,6 +1170,22 @@ namespace MakeMeUpzz.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string subTotal {
+                get {
+                    try {
+                        return ((string)(this[this.tableTransactionDetails.subTotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'subTotal\' in table \'TransactionDetails\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTransactionDetails.subTotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public TransactionHeadersRow TransactionHeadersRow {
                 get {
                     return ((TransactionHeadersRow)(this.GetParentRow(this.Table.ParentRelations["TransactionHeaders_TransactionDetails"])));
@@ -1169,6 +1241,18 @@ namespace MakeMeUpzz.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetQuantityNull() {
                 this[this.tableTransactionDetails.QuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IssubTotalNull() {
+                return this.IsNull(this.tableTransactionDetails.subTotalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetsubTotalNull() {
+                this[this.tableTransactionDetails.subTotalColumn] = global::System.Convert.DBNull;
             }
         }
         
