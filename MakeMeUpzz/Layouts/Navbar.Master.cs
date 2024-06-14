@@ -74,5 +74,15 @@ namespace MakeMeUpzz.Layouts
         {
             Response.Redirect("~/Views/TransactionHistoryPage.aspx");
         }
+
+        protected void TransactionHistoryButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/TransactionHistoryPage.aspx");
+        }
+
+        protected void HandleTransactionButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/HandleTransactionPage.aspx");
+        }
     }
 }

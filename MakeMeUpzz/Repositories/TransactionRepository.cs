@@ -83,5 +83,13 @@ namespace MakeMeUpzz.Repositories
             db.TransactionDetails.Add(td);
             db.SaveChanges();
         }
+
+        public static void HandleTransaction(int TransactionID)
+        {
+            DatabaseContextEntities db = Singleton.getDB();
+            TransactionHeader updateTransaction = GetTransactionHeaderByID(TransactionID);
+            updateTransaction.Status = "handled";
+            db.SaveChanges();
+        }
     }
 }
