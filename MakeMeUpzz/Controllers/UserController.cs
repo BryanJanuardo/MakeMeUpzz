@@ -26,7 +26,17 @@ namespace MakeMeUpzz.Controllers
                 return Response<User>.createResponse("Gender must not be empty", false, null);
             }
 
-            string validateEmail = GetUserByEmail(email).value.UserEmail;
+            string validateEmail;
+            Response<User> response = GetUserByEmail(email);
+            if(response.success == false)
+            {
+                validateEmail = null;
+            }
+            else
+            {
+                validateEmail = response.value.UserEmail;
+            }
+            
 
             if (validateEmail != null && validateEmail.ToUpper().Equals(email.ToUpper()))
             {

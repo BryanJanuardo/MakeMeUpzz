@@ -44,7 +44,14 @@ namespace MakeMeUpzz.Handlers
         public static Response<User> GetUserByEmail(string email)
         {
             User user = (from User in UserRepository.getAllUser() where User.UserEmail.ToUpper().Equals(email.ToUpper()) select User).FirstOrDefault();
-            return Response<User>.createResponse("Get user by email success!", true, user);
+            if(user == null)
+            {
+                return Response<User>.createResponse("Get user by email fail", false, null);
+            }
+            else
+            {
+                return Response<User>.createResponse("Get user by email success!", true, user);
+            }
         }
         public static Response<User> getUserByCredentials(string email, string password)
         {
