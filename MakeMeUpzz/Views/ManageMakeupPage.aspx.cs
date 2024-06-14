@@ -12,6 +12,17 @@ namespace MakeMeUpzz.Views
 {
     public partial class ManageMakeupPage : System.Web.UI.Page
     {
+        private void updateTable()
+        {
+            MakeupGridView.DataSource = MakeupController.getAllMakeupSortDescByRating().value;
+            MakeupGridView.DataBind();
+
+            MakeupTypeGridView.DataSource = MakeupTypeController.getAllMakeupType().value;
+            MakeupTypeGridView.DataBind();
+
+            MakeupBrandGridView.DataSource = MakeupBrandController.getAllMakeupBrand().value;
+            MakeupBrandGridView.DataBind();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if(IsPostBack == false)
@@ -40,8 +51,8 @@ namespace MakeMeUpzz.Views
                         Response.Redirect("~/Views/HomePage.aspx");
                     }
                 }
-                MakeupGridView.DataSource = MakeupController.getAllMakeupSortDescByRating().value;
-                MakeupGridView.DataBind();
+
+                updateTable();
             }
         }
 
@@ -72,9 +83,40 @@ namespace MakeMeUpzz.Views
             GridViewRow row = MakeupGridView.Rows[e.RowIndex];
             int id = Convert.ToInt32(row.Cells[0].Text);
             Response<Makeup> response = MakeupController.deleteMakeup(id);
-            MakeupGridView.DataSource = MakeupController.getAllMakeupSortDescByRating().value;
-            MakeupGridView.DataBind();
+            updateTable();
             ErrorLabel.Text = response.message;
+        }
+        protected void MakeupTypeGridView_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewRow row = MakeupTypeGridView.Rows[e.NewEditIndex];
+            int id = Convert.ToInt32(row.Cells[0].Text);
+            Response.Redirect("~/Views/UpdateMakeupTypePage.aspx?ID=" + id);
+            updateTable();
+        }
+
+        protected void MakeupTypeGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            GridViewRow row = MakeupTypeGridView.Rows[e.RowIndex];
+            int id = Convert.ToInt32(row.Cells[0].Text);
+            Response<MakeupType> response = MakeupTypeController.deleteMakeupType(id);
+            updateTable();
+            ErrorLabelType.Text = response.message;
+        }
+        protected void MakeupBrandGridView_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewRow row = MakeupBrandGridView.Rows[e.NewEditIndex];
+            int id = Convert.ToInt32(row.Cells[0].Text);
+            Response.Redirect("~/Views/UpdateMakeupBrandPage.aspx?ID=" + id);
+            updateTable();
+        }
+
+        protected void MakeupBrandGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            GridViewRow row = MakeupBrandGridView.Rows[e.RowIndex];
+            int id = Convert.ToInt32(row.Cells[0].Text);
+            Response<MakeupBrand> response = MakeupBrandController.deleteMakeupBrand(id);
+            updateTable();
+            ErrorLabelBrand.Text = response.message;
         }
     }
 }

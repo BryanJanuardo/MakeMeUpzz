@@ -28,6 +28,13 @@ namespace MakeMeUpzz.Repositories
             db.SaveChangesAsync();
         }
 
+        public static void deleteMakeupType(int id)
+        {
+            DatabaseContextEntities db = Singleton.getDB();
+            MakeupType makeuptype = (from type in db.MakeupTypes where type.MakeupTypeID == id select type).FirstOrDefault();
+            db.MakeupTypes.Remove(makeuptype);
+            db.SaveChanges();
+        }
         public static void updateMakeupType(int id, string name)
         {
             DatabaseContextEntities db = Singleton.getDB();

@@ -26,7 +26,7 @@ namespace MakeMeUpzz.Layouts
 
         protected void OrderQueueButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Views/TransactionDetailPage.aspx");
+            Response.Redirect("~/Views/HandleTransactionPage.aspx");
         }
 
         protected void UserLogoutButton_Click(object sender, EventArgs e)
@@ -78,11 +78,6 @@ namespace MakeMeUpzz.Layouts
         protected void TransactionHistoryButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Views/TransactionHistoryPage.aspx");
-        }
-
-        protected void HandleTransactionButton_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/Views/HandleTransactionPage.aspx");
         }
     }
 }

@@ -42,6 +42,24 @@ namespace MakeMeUpzz.Views
         protected global::System.Web.UI.WebControls.Button InsertMakeupButton;
 
         /// <summary>
+        /// MakeupTypeGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView MakeupTypeGridView;
+
+        /// <summary>
+        /// ErrorLabelType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ErrorLabelType;
+
+        /// <summary>
         /// InsertMakeupTypeButton control.
         /// </summary>
         /// <remarks>
@@ -49,6 +67,24 @@ namespace MakeMeUpzz.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button InsertMakeupTypeButton;
+
+        /// <summary>
+        /// MakeupBrandGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView MakeupBrandGridView;
+
+        /// <summary>
+        /// ErrorLabelBrand control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ErrorLabelBrand;
 
         /// <summary>
         /// InsertMakeupBrandButton control.

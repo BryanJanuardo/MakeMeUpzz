@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Xml.Linq;
 
 namespace MakeMeUpzz.Handlers
 {
@@ -41,6 +42,12 @@ namespace MakeMeUpzz.Handlers
             return Response<int>.createResponse("Get makeup type id by name success!", true, MakeupTypeId);
         }
 
+        public static Response<MakeupType> deleteMakeupType(int id)
+        {
+            MakeupTypeRepository.deleteMakeupType(id);
+            return Response<MakeupType>.createResponse("Delete makeup type success!", true, null);
+        }
+
         public static Response<MakeupType> insertNewMakeupType(string name)
         {
             MakeupType newMakeupType = MakeupTypeFactory.createMakeupType(generateNewMakeupTypeId().value, name);
@@ -62,6 +69,23 @@ namespace MakeMeUpzz.Handlers
             List<string> makeupTypesName = (from type in makeupTypes select type.MakeupTypeName).ToList();
 
             return Response<List<string>>.createResponse("Get all makeup type name success!", true, makeupTypesName);
+        }
+
+        public static Response<MakeupType> getMakeupTypeByName(string name)
+        {
+            List<MakeupType> makeupTypes = MakeupTypeRepository.getAllMakeupType();
+            MakeupType makeupType = (from type in makeupTypes where type.MakeupTypeName == name select type).FirstOrDefault();
+
+            return Response<MakeupType>.createResponse("Get makeup type by name success!", true, makeupType);
+
+        }
+
+        public static Response<MakeupType> getMakeupTypeById(int id)
+        {
+            List<MakeupType> makeupTypes = MakeupTypeRepository.getAllMakeupType();
+            MakeupType makeupType = (from type in makeupTypes where type.MakeupTypeID == id select type).FirstOrDefault();
+
+            return Response<MakeupType>.createResponse("Get makeup type by name success!", true, makeupType);
         }
     }
 }

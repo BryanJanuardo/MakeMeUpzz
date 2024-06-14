@@ -5,11 +5,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Xml.Linq;
 
 namespace MakeMeUpzz.Controllers
 {
     public class MakeupTypeController
     {
+        public static Response<List<MakeupType>> getAllMakeupType()
+        {
+            Response<List<MakeupType>> response = MakeupTypeHandler.getAllMakeupType();
+            return response;
+        }
+
         public static Response<List<string>> getAllMakeupTypeName()
         {
             Response<List<string>> response = MakeupTypeHandler.getAllMakeupTypeName();
@@ -28,6 +35,12 @@ namespace MakeMeUpzz.Controllers
             return response;
         }
 
+        public static Response<MakeupType> deleteMakeupType(int id)
+        {
+            Response<MakeupType> response = MakeupTypeHandler.deleteMakeupType(id);
+            return response;
+        }
+
         public static Response<MakeupType> newMakeupTypeValidation(string name)
         {
             if (name == null)
@@ -40,6 +53,17 @@ namespace MakeMeUpzz.Controllers
             }
 
             return Response<MakeupType>.createResponse("Validation makeup type success!", true, null);
+        }
+
+        public static Response<MakeupType> getMakeupTypeByName(string name)
+        {
+            Response<MakeupType> response = MakeupTypeHandler.getMakeupTypeByName(name);
+            return response;
+        }
+        public static Response<MakeupType> getMakeupTypeById(int id)
+        {
+            Response<MakeupType> response = MakeupTypeHandler.getMakeupTypeById(id);
+            return response;
         }
     }
 }

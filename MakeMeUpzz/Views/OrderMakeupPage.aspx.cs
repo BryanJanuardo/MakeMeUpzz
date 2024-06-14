@@ -75,7 +75,7 @@ namespace MakeMeUpzz.Views
                     return;
                 }
 
-                CartController.addMakeupToCart(userId, makeupId, makeupQuantity);
+                response = CartController.addMakeupToCart(userId, makeupId, makeupQuantity);
                 ErrorLabel.Text = response.message;
             }
         }

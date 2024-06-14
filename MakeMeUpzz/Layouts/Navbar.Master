@@ -9,6 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Button ID="HomeButton" runat="server" Text="Home" OnClick="HomeButton_Click" />
             <%if ((Session["user"] as MakeMeUpzz.Models.User).UserRole == "User")
                 {%>
             <asp:Button ID="OrderMakeupButton" runat="server" Text="Order Makeup" OnClick="OrderMakeupButton_Click" />
@@ -16,15 +17,13 @@
             <asp:Button ID="UserProfileButton" runat="server" Text="Profile" OnClick="UserProfileButton_Click" />
             <asp:Button ID="UserLogoutButton" runat="server" Text="Logout" OnClick="UserLogoutButton_Click" />
             <%}
-                else if ((Session["user"] as MakeMeUpzz.Models.User).UserRole == "Admin")
-                {%>
-            <asp:Button ID="HomeButton" runat="server" Text="Home" OnClick="HomeButton_Click" />
+            else if ((Session["user"] as MakeMeUpzz.Models.User).UserRole == "Admin")
+            {%>
             <asp:Button ID="ManageMakeupButton" runat="server" Text="ManageMakeup" OnClick="ManageMakeupButton_Click" />
             <asp:Button ID="OrderQueueButton" runat="server" Text="OrderQueue" OnClick="OrderQueueButton_Click" />
             <asp:Button ID="AdminProfileButton" runat="server" Text="Profile" OnClick="AdminProfileButton_Click" />
             <asp:Button ID="TransactionReportButton" runat="server" Text="TransactionReport" OnClick="TransactionReportButton_Click" />
             <asp:Button ID="TransactionHistoryButton" runat="server" Text="TransactionHistory" OnClick="TransactionHistoryButton_Click" />
-            <asp:Button ID="HandleTransactionButton" runat="server" Text="HandleTransaction" OnClick="HandleTransactionButton_Click" />
             <asp:Button ID="AdminLogoutButton" runat="server" Text="Logout" OnClick="AdminLogoutButton_Click" />
             <%}%>
         </div>

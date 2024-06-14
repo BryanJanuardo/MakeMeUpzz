@@ -24,6 +24,15 @@ namespace MakeMeUpzz.Layouts
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// HomeButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button HomeButton;
+
+        /// <summary>
         /// OrderMakeupButton control.
         /// </summary>
         /// <remarks>
@@ -58,15 +67,6 @@ namespace MakeMeUpzz.Layouts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button UserLogoutButton;
-
-        /// <summary>
-        /// HomeButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button HomeButton;
 
         /// <summary>
         /// ManageMakeupButton control.
@@ -112,15 +112,6 @@ namespace MakeMeUpzz.Layouts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button TransactionHistoryButton;
-
-        /// <summary>
-        /// HandleTransactionButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button HandleTransactionButton;
 
         /// <summary>
         /// AdminLogoutButton control.

@@ -17,40 +17,38 @@ namespace MakeMeUpzz.Views
         {
             if (IsPostBack == false)
             {
-                List<string> MakeupTypes = MakeupTypeController.getAllMakeupTypeName().value;
-
-                MakeupTypeDropDownList.DataSource = MakeupTypes;
-                MakeupTypeDropDownList.DataBind();
-            }
-
-            if (Session["user"] == null && Request.Cookies["User_Cookie"] == null)
-            {
-                Response.Redirect("LoginPage.aspx");
-            }
-            else
-            {
-                User user;
-                if (Session["user"] == null)
+                if (Session["user"] == null && Request.Cookies["User_Cookie"] == null)
                 {
-                    var id = Convert.ToInt32(Request.Cookies["User_Cookie"].Value);
-                    user = UserController.getUserByUserId(id).value;
-                    Session["user"] = user;
-
-
-                    if (user.UserRole.Equals("User"))
-                    {
-                        Response.Redirect("HomePage.aspx");
-                    }
+                    Response.Redirect("LoginPage.aspx");
                 }
                 else
                 {
-                    user = (User)Session["user"];
-
-                    if (user.UserRole.Equals("User"))
+                    User user;
+                    if (Session["user"] == null)
                     {
-                        Response.Redirect("HomePage.aspx");
+                        var userid = Convert.ToInt32(Request.Cookies["User_Cookie"].Value);
+                        user = UserController.getUserByUserId(userid).value;
+                        Session["user"] = user;
+
+
+                        if (user.UserRole.Equals("User"))
+                        {
+                            Response.Redirect("HomePage.aspx");
+                        }
+                    }
+                    else
+                    {
+                        user = (User)Session["user"];
+
+                        if (user.UserRole.Equals("User"))
+                        {
+                            Response.Redirect("HomePage.aspx");
+                        }
                     }
                 }
+                int id = Convert.ToInt32(Request.QueryString["id"]);
+                Response<MakeupType> response = MakeupTypeController.getMakeupTypeById(id);
+                MakeupTypeNameInput.Text = response.value.MakeupTypeName;
             }
         }
         protected void SubmitButton_Click(object sender, EventArgs e)
@@ -58,21 +56,15 @@ namespace MakeMeUpzz.Views
             string makeupTypeName = MakeupTypeNameInput.Text;
 
             Response<MakeupType> response = MakeupTypeController.newMakeupTypeValidation(makeupTypeName);
-
+            int id = Convert.ToInt32(Request.QueryString["id"]);
             if (response.success == false)
             {
                 ErrorValidationLabel.Text = response.message;
                 return;
-            }    
-
-            MakeupTypeController.updateMakeupType(MakeupTypeDropDownList.SelectedIndex + 1, makeupTypeName);
-
-            Response.Redirect("UpdateMakeupTypePage.aspx");
-        }
-
-        protected void MakeupTypeDropDownList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            MakeupTypeNameInput.Text = MakeupTypeDropDownList.Text;
+            }
+            
+            response = MakeupTypeController.updateMakeupType(id, makeupTypeName);
+            ErrorValidationLabel.Text += response.message;
         }
 
         protected void BackBtn_Click(object sender, EventArgs e)

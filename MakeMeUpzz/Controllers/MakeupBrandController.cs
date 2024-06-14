@@ -16,24 +16,38 @@ namespace MakeMeUpzz.Controllers
             return response;
         }
 
+        public static Response<List<MakeupBrand>> getAllMakeupBrand()
+        {
+            Response<List<MakeupBrand>> response = MakeupBrandHandler.getAllMakeupBrand();
+            return response;
+        }
+
         public static Response<MakeupBrand> validationNewMakeupBrand(string name, string rating)
         {
-            if(name == null)
+            try
             {
-                return Response<MakeupBrand>.createResponse("Brand name must be filled", false, null);
+                if (name == null)
+                {
+                    return Response<MakeupBrand>.createResponse("Brand name must be filled", false, null);
+                }
+                else if (name.Length <= 0 && name.Length > 100)
+                {
+                    return Response<MakeupBrand>.createResponse("Length brand name must be between 1 - 99 characters", false, null);
+                }
+                else if (rating == null)
+                {
+                    return Response<MakeupBrand>.createResponse("Rating must be filled", false, null);
+                }
+                else if (Convert.ToInt32(rating) < 0 && Convert.ToInt32(rating) > 100)
+                {
+                    return Response<MakeupBrand>.createResponse("Rating must be between 0 - 100", false, null);
+                }
             }
-            else if(name.Length <= 0 && name.Length > 100)
+            catch(Exception ex)
             {
-                return Response<MakeupBrand>.createResponse("Length brand name must be between 1 - 99 characters", false, null);
+                return Response<MakeupBrand>.createResponse("Rating must be number", false, null);
             }
-            else if(rating == null)
-            {
-                return Response<MakeupBrand>.createResponse("Rating must be filled", false, null);
-            }
-            else if(Convert.ToInt32(rating) < 0 && Convert.ToInt32(rating) > 100)
-            {
-                return Response<MakeupBrand>.createResponse("Rating must be between 0 - 100", false, null);
-            }
+            
             return Response<MakeupBrand>.createResponse("Validation makeup brand success!", true, null);
         }
 
@@ -51,8 +65,14 @@ namespace MakeMeUpzz.Controllers
 
         public static Response<MakeupBrand> deleteMakeupBrand(int id)
         {
-            Response<MakeupBrand> reponse = MakeupBrandHandler.deleteMakeupBrand(id);
-            return reponse;
+            Response<MakeupBrand> response = MakeupBrandHandler.deleteMakeupBrand(id);
+            return response;
+        }
+
+        public static Response<MakeupBrand> getMakeupBrandById(int id)
+        {
+            Response<MakeupBrand> response = MakeupBrandHandler.getMakeupBrandById(id);
+            return response;
         }
     }
 }

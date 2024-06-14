@@ -3,7 +3,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Handle Transaction </h1>
 
-    <asp:GridView ID="HandleTransactionGV" runat="server" AutoGenerateColumns="false" OnRowDataBound="HandleTransactionGV_RowDataBound" OnRowEditing="HandleTransactionGV_RowEditing" OnSelectedIndexChanged="HandleTransactionGV_SelectedIndexChanged">
+    <asp:GridView ID="HandleTransactionGV" runat="server" AutoGenerateColumns="false" OnRowDataBound="HandleTransactionGV_RowDataBound" OnRowEditing="HandleTransactionGV_RowEditing">
         <Columns>
             <asp:BoundField DataField="TransactionID" HeaderText="Transaction ID" ReadOnly="True" SortExpression="TransactionID"></asp:BoundField>
             <asp:BoundField DataField="UserID" HeaderText="User ID" ReadOnly="True" SortExpression="UserID"></asp:BoundField>

@@ -68,5 +68,13 @@ namespace MakeMeUpzz.Handlers
 
             return Response<MakeupBrand>.createResponse("Delete makeup brand success!", true, null);
         }
+
+        public static Response<MakeupBrand> getMakeupBrandById(int id)
+        {
+            List<MakeupBrand> makeupbrands = MakeupBrandRepository.getAllMakeUpBrand();
+            MakeupBrand makeupbrand = (from brand in makeupbrands where brand.MakeupBrandID == id select brand).FirstOrDefault();
+
+            return Response<MakeupBrand>.createResponse("Get makeup brand by id success!", true, makeupbrand);
+        }
     }
 }
