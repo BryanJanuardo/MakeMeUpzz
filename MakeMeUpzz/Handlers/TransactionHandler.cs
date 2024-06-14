@@ -103,5 +103,11 @@ namespace MakeMeUpzz.Handlers
             var transactionDetail = TransactionRepository.showDetail(transactionID);
             return Response<List<object>>.createResponse("Show transaction detail success!", true, transactionDetail);
         }
+
+        public static void HandleTransaction(int transactionID)
+        {
+            TransactionRepository.HandleTransaction(transactionID);
+        }
+
     }
 }

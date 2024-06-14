@@ -52,5 +52,10 @@ namespace MakeMeUpzz.Controllers
             Response<List<object>> response = TransactionHandler.showDetail(transactionID);
             return response;
         }
+
+        public static void HandleTransaction(int transactionID)
+        {
+            TransactionHandler.HandleTransaction(transactionID);
+        }
     }
 }

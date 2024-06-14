@@ -126,7 +126,7 @@ namespace MakeMeUpzz.Controllers
 
         public static void LoadCustomerData(GridView customerData)
         {
-            var customerDataList = getAllUser();
+            var customerDataList = getAllUser().value;
             customerData.DataSource = customerDataList;
             customerData.DataBind();
         }
