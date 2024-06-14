@@ -34,7 +34,7 @@ namespace MakeMeUpzz.Views
 
 
                 string role = UserController.GetCurrentUserRole(user);
-                roleLbl.Text = "Your role is " + role;
+                roleLbl.Text = "Hi " + user.Username + ", your role is " + role;
 
                 if (role == "Admin")
                 {
