@@ -62,7 +62,7 @@ namespace MakeMeUpzz.Layouts
 
         protected void TransactionReportButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Views/ViewTransactionReportPage.aspx");
+            Response.Redirect("~/Views/ViewTransactionsReportPage.aspx");
         }
 
         protected void HomeButton_Click(object sender, EventArgs e)
