@@ -11,8 +11,7 @@ namespace MakeMeUpzz.Handlers
 {
     public class MakeupBrandHandler
     {
-        
-        private static int generateNewMakeupBrandId()
+        private static Response<int> generateNewMakeupBrandId()
         {
             int newId = 1;
             int latestId = (from x in MakeupBrandRepository.getAllMakeUpBrand() select x.MakeupBrandID).ToList().LastOrDefault();
@@ -26,7 +25,7 @@ namespace MakeMeUpzz.Handlers
                 newId = latestId + 1;
             }
 
-            return newId;
+            return Response<int>.createResponse("Generate new id success!", true, newId);
         }
 
         public static Response<List<MakeupBrand>> getAllMakeupBrand()
@@ -47,20 +46,27 @@ namespace MakeMeUpzz.Handlers
             return Response<List<string>>.createResponse("Get all makeup brand name success!", true, brandName);
         }
 
-        public static void insertNewMakeupBrand(string name, int rating)
+        public static Response<MakeupBrand> insertNewMakeupBrand(string name, int rating)
         {
-            MakeupBrand newMakeupBrand = MakeupBrandFactory.createMakeupBrand(generateNewMakeupBrandId(), name, rating);
+            MakeupBrand newMakeupBrand = MakeupBrandFactory.createMakeupBrand(generateNewMakeupBrandId().value, name, rating);
             MakeupBrandRepository.insertNewMakeupBrand(newMakeupBrand);
+
+            return Response<MakeupBrand>.createResponse("Insert makeup brand success!", true, null);
         }
 
-        public static void editNewMakeupBrand(int id, string name, int rating)
+        public static Response<MakeupBrand> editNewMakeupBrand(int id, string name, int rating)
         {
             MakeupBrand newMakeupBrand = MakeupBrandFactory.createMakeupBrand(id, name, rating);
             MakeupBrandRepository.editMakeupBrand(newMakeupBrand);
+
+            return Response<MakeupBrand>.createResponse("Edit makeup brand success!", true, null);
         }
-        public static void deleteMakeupBrand(int id)
+
+        public static Response<MakeupBrand> deleteMakeupBrand(int id)
         {
             MakeupBrandRepository.deleteMakeupBrand(id);
+
+            return Response<MakeupBrand>.createResponse("Delete makeup brand success!", true, null);
         }
     }
 }

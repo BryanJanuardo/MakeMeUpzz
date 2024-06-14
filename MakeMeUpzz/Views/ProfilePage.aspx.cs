@@ -29,7 +29,6 @@ namespace MakeMeUpzz.Views
             }
 
         }
-      
 
         protected void updateProfileBtn_Click(object sender, EventArgs e)
         {

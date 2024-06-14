@@ -1,4 +1,6 @@
 ﻿using MakeMeUpzz.Controllers;
+using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +14,7 @@ namespace MakeMeUpzz.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            FailLbl.Text = "";
         }
 
         protected void InputButton_Click(object sender, EventArgs e)
@@ -20,9 +22,12 @@ namespace MakeMeUpzz.Views
             string name = MakeUpBrandTxt.Text;
             string ratingText = MakeUpRatingTxt.Text.ToString();
 
-            FailLbl.Text = MakeupBrandController.validationNewMakeupBrand(name, ratingText);
-            if (FailLbl.Text != "")
+            Response<MakeupBrand> response = MakeupBrandController.validationNewMakeupBrand(name, ratingText);
+            if (response.success == false)
+            {
+                FailLbl.Text = response.message;
                 return;
+            }
 
             int rating = Convert.ToInt32(ratingText);
             MakeupBrandController.insertNewMakeupBrand(name, rating);

@@ -26,7 +26,7 @@ namespace MakeMeUpzz.Views
             User user = Session["user"] as User;
             if (IsPostBack == false)
             {
-                MakeupGridView.DataSource = MakeupController.getAllMakeupSortDescByRating();
+                MakeupGridView.DataSource = MakeupController.getAllMakeupSortDescByRating().value;
                 MakeupGridView.DataBind();
                 setDefaultValueMakeupQuantity();
             }

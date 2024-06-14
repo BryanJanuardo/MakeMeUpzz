@@ -31,11 +31,22 @@ namespace MakeMeUpzz.Layouts
 
         protected void UserLogoutButton_Click(object sender, EventArgs e)
         {
+            string[] cookies = Request.Cookies.AllKeys;
+            foreach(string cookie in cookies)
+            {
+                Response.Cookies[cookie].Expires = DateTime.Now.AddDays(-999);
+            }
+
             Response.Redirect("~/Views/LoginPage.aspx");
         }
 
         protected void AdminLogoutButton_Click(object sender, EventArgs e)
         {
+            string[] cookies = Request.Cookies.AllKeys;
+            foreach (string cookie in cookies)
+            {
+                Response.Cookies[cookie].Expires = DateTime.Now.AddDays(-999);
+            }
             Response.Redirect("~/Views/LoginPage.aspx");
         }
 

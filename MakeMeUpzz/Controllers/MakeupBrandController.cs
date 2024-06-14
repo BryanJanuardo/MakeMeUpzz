@@ -1,4 +1,5 @@
 ﻿using MakeMeUpzz.Handlers;
+using MakeMeUpzz.Models;
 using MakeMeUpzz.Modules;
 using System;
 using System.Collections.Generic;
@@ -15,40 +16,43 @@ namespace MakeMeUpzz.Controllers
             return response;
         }
 
-        public static string validationNewMakeupBrand(string name, string rating)
+        public static Response<MakeupBrand> validationNewMakeupBrand(string name, string rating)
         {
             if(name == null)
             {
-                return "Brand name must be filled";
+                return Response<MakeupBrand>.createResponse("Brand name must be filled", false, null);
             }
             else if(name.Length <= 0 && name.Length > 100)
             {
-                return "Length brand name must be between 1 - 99 characters";
+                return Response<MakeupBrand>.createResponse("Length brand name must be between 1 - 99 characters", false, null);
             }
             else if(rating == null)
             {
-                return "Rating must be filled";
+                return Response<MakeupBrand>.createResponse("Rating must be filled", false, null);
             }
             else if(Convert.ToInt32(rating) < 0 && Convert.ToInt32(rating) > 100)
             {
-                return "Rating must be between 0 - 100";
+                return Response<MakeupBrand>.createResponse("Rating must be between 0 - 100", false, null);
             }
-            return "";
+            return Response<MakeupBrand>.createResponse("Validation makeup brand success!", true, null);
         }
 
-        public static void insertNewMakeupBrand(string name, int rating)
+        public static Response<MakeupBrand> insertNewMakeupBrand(string name, int rating)
         {
-            MakeupBrandHandler.insertNewMakeupBrand(name, rating);
+            Response<MakeupBrand> response = MakeupBrandHandler.insertNewMakeupBrand(name, rating);
+            return response;
         }
 
-        public static void editMakeupBrand(int id, string name, int rating)
+        public static Response<MakeupBrand> editMakeupBrand(int id, string name, int rating)
         {
-            MakeupBrandHandler.editNewMakeupBrand(id, name, rating);
+            Response<MakeupBrand> reponse = MakeupBrandHandler.editNewMakeupBrand(id, name, rating);
+            return reponse;
         }
 
-        public static void deleteMakeupBrand(int id)
+        public static Response<MakeupBrand> deleteMakeupBrand(int id)
         {
-            MakeupBrandHandler.deleteMakeupBrand(id);
+            Response<MakeupBrand> reponse = MakeupBrandHandler.deleteMakeupBrand(id);
+            return reponse;
         }
     }
 }
