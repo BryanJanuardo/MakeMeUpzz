@@ -14,33 +14,34 @@ namespace MakeMeUpzz.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-                if (Session["user"] == null && Request.Cookies["User_Cookie"] == null)
+            ErrorLabel.Text = "";
+            if (Session["user"] == null && Request.Cookies["User_Cookie"] == null)
+            {
+                Response.Redirect("~/Views/LoginPage.aspx");
+            }
+            else
+            {
+                User user;
+                if (Session["user"] == null)
                 {
-                    Response.Redirect("~/Views/HomePage.aspx");
+                    var id = Convert.ToInt32(Request.Cookies["User_Cookie"].Value);
+                    user = UserController.getUserByUserId(id).value;
+                    Session["user"] = user;
                 }
                 else
                 {
-                    User user;
-                    if (Session["user"] == null)
-                    {
-                        var id = Convert.ToInt32(Request.Cookies["User_Cookie"].Value);
-                        user = UserController.getUserByUserId(id).value;
-                        Session["user"] = user;
-                    }
-                    else
-                    {
-                        user = (User)Session["user"];
-                    }
-
-
-                    string role = UserController.GetCurrentUserRole(user);
-
-                    if (role == "Admin")
-                    {
-                    ShowTransactionList();
-                    }
+                    user = (User)Session["user"];
                 }
+
+                if (user.UserRole == "Admin")
+                {
+                    ShowTransactionList();
+                }
+                else if(user.UserRole == "User")
+                {
+                    Response.Redirect("~/Views/HomePage.aspx");
+                }
+            }
         }
 
         private void ShowTransactionList()
@@ -53,7 +54,8 @@ namespace MakeMeUpzz.Views
         {
             GridViewRow row = HandleTransactionGV.Rows[e.NewEditIndex];
             int transactionID = Convert.ToInt32(row.Cells[0].Text);
-            TransactionController.HandleTransaction(transactionID);
+            Response<TransactionHeader> response = TransactionController.HandleTransaction(transactionID);
+            ErrorLabel.Text = response.message;
             ShowTransactionList();
         }
 

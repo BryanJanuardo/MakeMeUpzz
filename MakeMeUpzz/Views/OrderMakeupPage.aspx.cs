@@ -26,6 +26,29 @@ namespace MakeMeUpzz.Views
             User user = Session["user"] as User;
             if (IsPostBack == false)
             {
+                ErrorLabel.Text = "";
+                if (Session["user"] == null && Request.Cookies["User_Cookie"] == null)
+                {
+                    Response.Redirect("~/Views/LoginPage.aspx");
+                }
+                else
+                {
+                    if (Session["user"] == null)
+                    {
+                        var id = Convert.ToInt32(Request.Cookies["User_Cookie"].Value);
+                        user = UserController.getUserByUserId(id).value;
+                        Session["user"] = user;
+                    }
+                    else
+                    {
+                        user = (User)Session["user"];
+                    }
+
+                    if (user.UserRole == "Admin")
+                    {
+                        Response.Redirect("~/Views/HomePage.aspx");
+                    }
+                }
                 MakeupGridView.DataSource = MakeupController.getAllMakeupSortDescByRating().value;
                 MakeupGridView.DataBind();
                 setDefaultValueMakeupQuantity();
@@ -53,6 +76,7 @@ namespace MakeMeUpzz.Views
                 }
 
                 CartController.addMakeupToCart(userId, makeupId, makeupQuantity);
+                ErrorLabel.Text = response.message;
             }
         }
 
@@ -65,6 +89,7 @@ namespace MakeMeUpzz.Views
                 ErrorLabel.Text = response.message;
                 return;
             }
+            ErrorLabel.Text = response.message;
         }
 
         protected void CheckoutButton_Click(object sender, EventArgs e)
@@ -76,6 +101,7 @@ namespace MakeMeUpzz.Views
                 ErrorLabel.Text = response.message;
                 return;
             }
+            ErrorLabel.Text = response.message;
         }
     }
 }

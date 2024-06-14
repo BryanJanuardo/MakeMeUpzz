@@ -129,11 +129,6 @@ namespace MakeMeUpzz.Controllers
             return Response<User>.createResponse("Login Success", true, null);
         }
 
-        public static string GetCurrentUserRole(User user)
-        {
-            return user.UserRole;
-        }
-
         public static void LoadCustomerData(GridView customerData)
         {
             var customerDataList = getAllUser().value;
@@ -141,52 +136,54 @@ namespace MakeMeUpzz.Controllers
             customerData.DataBind();
         }
 
-        public static string updateProfileValidation(string username, string email, string gender, string dob)
+        public static Response<User> updateProfileValidation(string username, string email, string gender, string dob)
         {
             if (username.Length < 5 || username.Length > 15)
             {
-                return "Username must be in between 5 to 15 characters";
+                return Response<User>.createResponse("Username must be in between 5 to 15 characters", false, null);
             }
 
             if (string.Compare(email.Substring(email.Length - 4, 4), ".com") != 0)
             {
-                return "Email must be valid and end with '.com'";
+                return Response<User>.createResponse("Email must be valid and end with '.com'", false, null);
             }
 
             if (String.Compare(gender, "None") == 0)
             {
-                return "Gender must not be empty";
+                return Response<User>.createResponse("Gender must not be empty", false, null);
             }
 
             if (string.IsNullOrEmpty(dob))
             {
-                return "Date of Birth cannot be empty";
+                return Response<User>.createResponse("Date of Birth cannot be empty", false, null);
             }
 
-            return "";
+            return Response<User>.createResponse("Validation update profile success!", true, null);
         }
 
-        public static string updatePasswordValidation(string currentPassword, string newPassword)
+        public static Response<User> updatePasswordValidation(string currentPassword, string newPassword)
         {
             if (string.IsNullOrEmpty(currentPassword))
             {
-                return "Password cannot be empty";
+                return Response<User>.createResponse("Password cannot be empty", false, null);
             }
             if (string.IsNullOrEmpty(newPassword))
             {
-                return "New password cannot be empty";
+                return Response<User>.createResponse("New password cannot be empty", false, null);
             }
-            return "";
+            return Response<User>.createResponse("Validation update password success!", true, null);
         }
 
-        public static string updateUserProfile(int userID, string username, string email, string gender, DateTime dob)
+        public static Response<User> updateUserProfile(int userID, string username, string email, string gender, DateTime dob)
         {
-            return UserHandler.updateUserProfile(userID, username, email, gender, dob);
+            Response<User> response = UserHandler.updateUserProfile(userID, username, email, gender, dob);
+            return response;
         }
 
-        public static void updateUserPassword(int userID, string oldPassword, string newPassword)
+        public static Response<User> updateUserPassword(int userID, string oldPassword, string newPassword)
         {
-            UserHandler.updateUserPassword(userID, oldPassword, newPassword);
+            Response<User> response = UserHandler.updateUserPassword(userID, oldPassword, newPassword);
+            return response;
         }
     }
 }

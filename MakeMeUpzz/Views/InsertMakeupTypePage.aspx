@@ -11,4 +11,5 @@
         <asp:Label ID="ErrorValidationLabel" runat="server" Text=""></asp:Label>
     </div>
     <asp:Button ID="SubmitButton" runat="server" Text="Submit" OnClick="SubmitButton_Click" />
+    <asp:Label ID="ErrorLabel" runat="server" Text="Label"></asp:Label>
 </asp:Content>

@@ -15,6 +15,29 @@ namespace MakeMeUpzz.Views
         protected void Page_Load(object sender, EventArgs e)
         {
             ErrorValidationLabel.Text = "";
+            if (Session["user"] == null && Request.Cookies["User_Cookie"] == null)
+            {
+                Response.Redirect("~/Views/LoginPage.aspx");
+            }
+            else
+            {
+                User user;
+                if (Session["user"] == null)
+                {
+                    var id = Convert.ToInt32(Request.Cookies["User_Cookie"].Value);
+                    user = UserController.getUserByUserId(id).value;
+                    Session["user"] = user;
+                }
+                else
+                {
+                    user = (User)Session["user"];
+                }
+
+                if (user.UserRole == "User")
+                {
+                    Response.Redirect("~/Views/HomePage.aspx");
+                }
+            }
         }
 
         protected void SubmitButton_Click(object sender, EventArgs e)
@@ -33,7 +56,8 @@ namespace MakeMeUpzz.Views
             int rating = Convert.ToInt32(ratingTxt);
             int id = Convert.ToInt32(Request.QueryString["id"]);
 
-            MakeupBrandController.editMakeupBrand(id, brand, rating);
+            response = MakeupBrandController.editMakeupBrand(id, brand, rating);
+            ErrorValidationLabel.Text = response.message;
         }
 
         protected void BackBtn_Click(object sender, EventArgs e)

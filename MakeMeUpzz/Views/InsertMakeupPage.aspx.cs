@@ -18,6 +18,30 @@ namespace MakeMeUpzz.Views
             if(IsPostBack == false)
             {
                 ErrorValidationLabel.Text = "";
+                if (Session["user"] == null && Request.Cookies["User_Cookie"] == null)
+                {
+                    Response.Redirect("~/Views/LoginPage.aspx");
+                }
+                else
+                {
+                    User user;
+                    if (Session["user"] == null)
+                    {
+                        var id = Convert.ToInt32(Request.Cookies["User_Cookie"].Value);
+                        user = UserController.getUserByUserId(id).value;
+                        Session["user"] = user;
+                    }
+                    else
+                    {
+                        user = (User)Session["user"];
+                    }
+
+                    if (user.UserRole == "User")
+                    {
+                        Response.Redirect("~/Views/HomePage.aspx");
+                    }
+                }
+
                 List<string> MakeupTypes = MakeupTypeController.getAllMakeupTypeName().value;
                 List<string> MakeupBrands = MakeupBrandController.getMakeupBrandName().value;
 

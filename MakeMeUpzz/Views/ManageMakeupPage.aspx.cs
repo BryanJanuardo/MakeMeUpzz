@@ -1,4 +1,6 @@
 ﻿using MakeMeUpzz.Controllers;
+using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,30 @@ namespace MakeMeUpzz.Views
         {
             if(IsPostBack == false)
             {
+                ErrorLabel.Text = "";
+                if (Session["user"] == null && Request.Cookies["User_Cookie"] == null)
+                {
+                    Response.Redirect("~/Views/LoginPage.aspx");
+                }
+                else
+                {
+                    User user;
+                    if (Session["user"] == null)
+                    {
+                        var id = Convert.ToInt32(Request.Cookies["User_Cookie"].Value);
+                        user = UserController.getUserByUserId(id).value;
+                        Session["user"] = user;
+                    }
+                    else
+                    {
+                        user = (User)Session["user"];
+                    }
+
+                    if (user.UserRole == "User")
+                    {
+                        Response.Redirect("~/Views/HomePage.aspx");
+                    }
+                }
                 MakeupGridView.DataSource = MakeupController.getAllMakeupSortDescByRating().value;
                 MakeupGridView.DataBind();
             }
@@ -45,9 +71,10 @@ namespace MakeMeUpzz.Views
         {
             GridViewRow row = MakeupGridView.Rows[e.RowIndex];
             int id = Convert.ToInt32(row.Cells[0].Text);
-            MakeupController.deleteMakeup(id);
+            Response<Makeup> response = MakeupController.deleteMakeup(id);
             MakeupGridView.DataSource = MakeupController.getAllMakeupSortDescByRating().value;
             MakeupGridView.DataBind();
+            ErrorLabel.Text = response.message;
         }
     }
 }

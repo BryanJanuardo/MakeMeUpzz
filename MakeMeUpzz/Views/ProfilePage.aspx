@@ -35,15 +35,16 @@
 
 
     <h2>Update password</h2>
+        <div>
+            <asp:Label ID="PasswordLbl" runat="server" Text="Password"></asp:Label>
+            <asp:TextBox ID="PasswordTxt" runat="server"></asp:TextBox>
+        </div>
+        <div>
+            <asp:Label ID="newPasswordLbl" runat="server" Text="New Password"></asp:Label>
+            <asp:TextBox ID="newPasswordTxt" runat="server" ></asp:TextBox>
+        </div>
+        <asp:Button ID="updatePasswordBtn" Text="Update Password" runat="server" OnClick="updatePasswordBtn_Click" />
     <div>
-        <asp:Label ID="PasswordLbl" runat="server" Text="Password"></asp:Label>
-        <asp:TextBox ID="PasswordTxt" runat="server"></asp:TextBox>
-    </div>
-    <div>
-        <asp:Label ID="newPasswordLbl" runat="server" Text="New Password"></asp:Label>
-        <asp:TextBox ID="newPasswordTxt" runat="server" ></asp:TextBox>
-    </div>
-    <asp:Button ID="updatePasswordBtn" Text="Update Password" runat="server" OnClick="updatePasswordBtn_Click" />
-    <div>
+        <asp:Label ID="ErrorLabel" runat="server" Text="Label"></asp:Label>
     </div>
 </asp:Content>

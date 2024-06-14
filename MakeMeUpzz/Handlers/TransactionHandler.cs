@@ -104,9 +104,11 @@ namespace MakeMeUpzz.Handlers
             return Response<List<object>>.createResponse("Show transaction detail success!", true, transactionDetail);
         }
 
-        public static void HandleTransaction(int transactionID)
+        public static Response<TransactionHeader> HandleTransaction(int transactionID)
         {
             TransactionRepository.HandleTransaction(transactionID);
+
+            return Response<TransactionHeader>.createResponse("Transaction handled!", true, null);
         }
 
     }

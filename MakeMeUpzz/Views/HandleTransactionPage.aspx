@@ -12,4 +12,5 @@
             <asp:CommandField ShowEditButton="True" EditText="Handle Transaction" ButtonType="Button" ShowHeader="True" HeaderText="Action"></asp:CommandField>
         </Columns>
     </asp:GridView>
+    <asp:Label ID="ErrorLabel" runat="server" Text="Label"></asp:Label>
 </asp:Content>

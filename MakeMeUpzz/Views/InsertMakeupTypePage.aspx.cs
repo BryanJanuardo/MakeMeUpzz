@@ -16,34 +16,27 @@ namespace MakeMeUpzz.Views
         {
             if (IsPostBack == false)
             {
-
-            }
-
-            if (Session["user"] == null && Request.Cookies["User_Cookie"] == null)
-            {
-                Response.Redirect("LoginPage.aspx");
-            }
-            else
-            {
-                User user;
-                if (Session["user"] == null)
+                if (Session["user"] == null && Request.Cookies["User_Cookie"] == null)
                 {
-                    var id = Convert.ToInt32(Request.Cookies["User_Cookie"].Value);
-                    user = UserController.getUserByUserId(id).value;
-                    Session["user"] = user;
-                    
-                    if(user.UserRole.Equals("User"))
-                    {
-                        Response.Redirect("HomePage.aspx");
-                    }
+                    Response.Redirect("~/Views/LoginPage.aspx");
                 }
                 else
                 {
-                    user = (User)Session["user"];
-
-                    if (user.UserRole.Equals("User"))
+                    User user;
+                    if (Session["user"] == null)
                     {
-                        Response.Redirect("HomePage.aspx");
+                        var id = Convert.ToInt32(Request.Cookies["User_Cookie"].Value);
+                        user = UserController.getUserByUserId(id).value;
+                        Session["user"] = user;
+                    }
+                    else
+                    {
+                        user = (User)Session["user"];
+                    }
+
+                    if (user.UserRole == "User")
+                    {
+                        Response.Redirect("~/Views/HomePage.aspx");
                     }
                 }
             }
@@ -58,7 +51,8 @@ namespace MakeMeUpzz.Views
             if(response.success == false)
                 ErrorValidationLabel.Text = response.message;
 
-            MakeupTypeController.insertNewMakeupType(makeupTypeName);
+            response = MakeupTypeController.insertNewMakeupType(makeupTypeName);
+            ErrorLabel.Text = response.message;
         }
 
         protected void BackBtn_Click(object sender, EventArgs e)

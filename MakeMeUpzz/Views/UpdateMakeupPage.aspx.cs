@@ -16,6 +16,30 @@ namespace MakeMeUpzz.Views
         {
             if (!IsPostBack)
             {
+                if (Session["user"] == null && Request.Cookies["User_Cookie"] == null)
+                {
+                    Response.Redirect("~/Views/LoginPage.aspx");
+                }
+                else
+                {
+                    User user;
+                    if (Session["user"] == null)
+                    {
+                        int userid = Convert.ToInt32(Request.Cookies["User_Cookie"].Value);
+                        user = UserController.getUserByUserId(userid).value;
+                        Session["user"] = user;
+                    }
+                    else
+                    {
+                        user = (User)Session["user"];
+                    }
+
+                    if (user.UserRole == "User")
+                    {
+                        Response.Redirect("~/Views/HomePage.aspx");
+                    }
+                }
+
                 int id = Convert.ToInt32(Request.QueryString["ID"]);
                 Makeup makeup = MakeupController.getMakeupById(id).value;
 

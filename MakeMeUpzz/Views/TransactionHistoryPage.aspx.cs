@@ -33,9 +33,7 @@ namespace MakeMeUpzz.Views
                         user = (User)Session["user"];
                     }
 
-                    string role = UserController.GetCurrentUserRole(user);
-
-                    if (role == "Admin")
+                    if (user.UserRole == "Admin")
                     {
                         List<TransactionHeader> data = TransactionController.getAllTransactionHeaders().value;
                         if (data.Count != 0)

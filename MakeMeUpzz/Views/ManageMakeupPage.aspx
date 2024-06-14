@@ -12,6 +12,7 @@
             <asp:CommandField ButtonType="Button" HeaderText="Action" ShowCancelButton="False" ShowDeleteButton="True" ShowEditButton="True" ShowHeader="True" />
         </Columns>
     </asp:GridView>
+    <asp:Label ID="ErrorLabel" runat="server" Text="Label"></asp:Label>
     <asp:Button ID="InsertMakeupButton" runat="server" Text="Insert Makeup" OnClick="InsertMakeupButton_Click" />
     <asp:Button ID="InsertMakeupTypeButton" runat="server" Text="Insert MakeupType" OnClick="InsertMakeupTypeButton_Click" />
     <asp:Button ID="InsertMakeupBrandButton" runat="server" Text="Insert MakeupBrand" OnClick="InsertMakeupBrandButton_Click" />

@@ -1,5 +1,6 @@
 ﻿using MakeMeUpzz.Controllers;
 using MakeMeUpzz.Models;
+using MakeMeUpzz.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,28 @@ namespace MakeMeUpzz.Views
 {
     public partial class ProfilePage : System.Web.UI.Page
     {
-        static int userID;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-
+                if (Session["user"] == null && Request.Cookies["User_Cookie"] == null)
+                {
+                    Response.Redirect("~/Views/LoginPage.aspx");
+                }
+                else
+                {
+                    User user;
+                    if (Session["user"] == null)
+                    {
+                        var id = Convert.ToInt32(Request.Cookies["User_Cookie"].Value);
+                        user = UserController.getUserByUserId(id).value;
+                        Session["user"] = user;
+                    }
+                    else
+                    {
+                        user = (User)Session["user"];
+                    }
+                }
                 User currentUser = Session["user"] as User;
                 if (currentUser != null)
                 {
@@ -38,17 +55,19 @@ namespace MakeMeUpzz.Views
             string genderTxt = rblGender.SelectedValue;
             string dobTxt = DOBDate.Text;
 
-            FailLbl.Text = UserController.updateProfileValidation(username, email, genderTxt, dobTxt);
-            if (FailLbl.Text != "")
+            Response<User> response = UserController.updateProfileValidation(username, email, genderTxt, dobTxt);
+            if (response.success == false)
+            {
+                FailLbl.Text = response.message;
                 return;
+            }
 
             User currentUser = Session["user"] as User;
-            userID = currentUser.UserID;
+            int userID = currentUser.UserID;
             DateTime dob = Convert.ToDateTime(dobTxt);
 
-            statusLbl.Text = UserController.updateUserProfile(userID, username, email, genderTxt, dob);
-
-            
+            response = UserController.updateUserProfile(userID, username, email, genderTxt, dob);
+            statusLbl.Text = response.message;
         }
 
         protected void updatePasswordBtn_Click(object sender, EventArgs e)
@@ -57,14 +76,17 @@ namespace MakeMeUpzz.Views
             string newPassword = newPasswordTxt.Text;
 
             User currentUser = Session["user"] as User;
-            userID = currentUser.UserID;
+            int userID = currentUser.UserID;
 
-            FailLbl.Text = UserController.updatePasswordValidation(currentPassword, newPassword);
-            if (FailLbl.Text != "")
+            Response<User> response = UserController.updatePasswordValidation(currentPassword, newPassword);
+            if (response.success == true)
+            {
+                FailLbl.Text = response.message;
                 return;
+            }
 
-            UserController.updateUserPassword(userID, currentPassword, newPassword);
-            
+            response = UserController.updateUserPassword(userID, currentPassword, newPassword);
+            ErrorLabel.Text = response.message;
         }
     }
 }

@@ -53,9 +53,10 @@ namespace MakeMeUpzz.Controllers
             return response;
         }
 
-        public static void HandleTransaction(int transactionID)
+        public static Response<TransactionHeader> HandleTransaction(int transactionID)
         {
-            TransactionHandler.HandleTransaction(transactionID);
+            Response<TransactionHeader> response = TransactionHandler.HandleTransaction(transactionID);
+            return response;
         }
     }
 }

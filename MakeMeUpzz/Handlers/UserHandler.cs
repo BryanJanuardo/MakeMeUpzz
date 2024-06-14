@@ -65,14 +65,16 @@ namespace MakeMeUpzz.Handlers
             return Response<User>.createResponse("Get user by user id success!", true, user);
         }
 
-        public static string updateUserProfile(int userID, string username, string email, string gender, DateTime dob)
+        public static Response<User> updateUserProfile(int userID, string username, string email, string gender, DateTime dob)
         {
-            return UserRepository.updateUserProfile(userID, username, email, gender, dob);
+            UserRepository.updateUserProfile(userID, username, email, gender, dob);
+            return Response<User>.createResponse("Update user profile success!", true, null);
         }
 
-        public static void updateUserPassword(int userID, string oldPassword, string newPassword)
+        public static Response<User> updateUserPassword(int userID, string oldPassword, string newPassword)
         {
-            UserRepository.updateUserPassword(userID, oldPassword, newPassword);    
+            UserRepository.updateUserPassword(userID, oldPassword, newPassword);
+            return Response<User>.createResponse("Update user password success!", true, null);
         }
     }
 }

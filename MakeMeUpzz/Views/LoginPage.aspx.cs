@@ -32,7 +32,9 @@ namespace MakeMeUpzz.Views
                 return;
             }
 
-            var user = UserController.getUserByCredentials(email, password).value;
+            response = UserController.getUserByCredentials(email, password);
+
+            var user = response.value;
                 
             if (user != null)
             {
@@ -50,7 +52,7 @@ namespace MakeMeUpzz.Views
             }
             else
             {
-                FailLbl.Text = "User not found";
+                FailLbl.Text = response.message;
                 return;
             }
         }

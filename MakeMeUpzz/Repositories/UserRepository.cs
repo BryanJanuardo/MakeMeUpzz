@@ -21,7 +21,7 @@ namespace MakeMeUpzz.Repositories
             db.SaveChangesAsync();
         }
 
-        public static string updateUserProfile(int userID, string username, string email, string gender, DateTime dob)
+        public static void updateUserProfile(int userID, string username, string email, string gender, DateTime dob)
         {
             DatabaseContextEntities db = Singleton.getDB();
             User toUpdateUser = (from user in db.Users where user.UserID == userID select user).FirstOrDefault();
@@ -33,9 +33,7 @@ namespace MakeMeUpzz.Repositories
                 toUpdateUser.UserGender = gender;
                 toUpdateUser.UserDOB = dob;
                 db.SaveChanges();
-                return "Successfully updated the new profile";
             }
-            return "Fail to update the user profile";
 
         }
 
